@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UX/UI Management — Hub Central</title>
+    <title>UX/UI Management — Hub Central GLUE</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
@@ -95,9 +95,10 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-4">
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#833177] to-[#e10098] flex items-center justify-center text-white font-black text-xl shadow-md shadow-pink-500/20">
-                    UX
+                    G
                 </div>
                 <div>
+                    <span class="text-[10px] font-extrabold tracking-widest text-[#e10098] uppercase block">GLUE Design System</span>
                     <h1 class="text-sm font-bold text-slate-900 tracking-tight">Liverpool Digital • UX/UI Portfolio Hub</h1>
                 </div>
             </div>
@@ -107,9 +108,6 @@
                     <i class="fa-solid fa-layer-group"></i>
                     <span id="activeCount">3 Activos</span>
                 </span>
-                <button onclick="openModal()" class="bg-[#e10098] hover:bg-[#b8007d] text-white text-xs font-bold px-4 py-2 rounded-xl transition flex items-center gap-2 shadow-md shadow-pink-500/20 active:scale-95">
-                    <i class="fa-solid fa-plus"></i> Registrar HTML
-                </button>
             </div>
         </div>
     </nav>
@@ -127,7 +125,7 @@
             </h2>
 
             <p class="text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
-                Bienvenido a este espacio centralizado de consulta, revisión y gobernanza. Aquí encontrarás los accesos directos a todas las plantillas, herramientas interactivas y paneles de seguimiento generados para el ecosistema <strong class="text-slate-900 font-bold">UX/UI Digital.</strong>
+                Bienvenido a este espacio centralizado de consulta, revisión y gobernanza. Aquí encontrarás los accesos directos a todas las presentaciones ejecutivas, herramientas interactivas, blueprints de talento y paneles de seguimiento generados para el ecosistema <strong class="text-slate-900 font-bold">GLUE Design System</strong> y la Dirección de UX de Liverpool.
             </p>
         </header>
 
@@ -178,68 +176,22 @@
 
     <footer class="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500">
         <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <span class="text-[11px]">UX/UI Management Hub</span>
+            <span class="uppercase tracking-widest text-[11px] font-semibold text-slate-600">GLUE Design System 2026 • Liverpool Digital</span>
+            <span class="text-[11px]">UX/UI Management Hub • El Puerto de Liverpool</span>
         </div>
     </footer>
-
-    <div id="newCardModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-2xl max-w-lg w-full p-6 space-y-5 animate-fadeIn">
-            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-                <div class="flex items-center gap-2">
-                    <div class="w-8 h-8 rounded-lg bg-pink-50 text-[#e10098] flex items-center justify-center text-sm font-bold">
-                        <i class="fa-solid fa-plus"></i>
-                    </div>
-                    <h3 class="font-bold text-slate-900 text-sm font-heading">Agregar Nuevo Entregable HTML</h3>
-                </div>
-                <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600 text-sm">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-
-            <form id="newCardForm" onsubmit="handleCreateCard(event)" class="space-y-4 text-xs">
-                <div>
-                    <label class="block font-bold text-slate-700 mb-1">Título del Documento *</label>
-                    <input type="text" id="formTitle" required placeholder="Ej. UI Kit Checkout Redesign" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-slate-800 focus:outline-none focus:border-[#e10098] focus:bg-white">
-                </div>
-
-                <div>
-                    <label class="block font-bold text-slate-700 mb-1">Descripción Breve *</label>
-                    <textarea id="formDesc" rows="3" required placeholder="Explica brevemente el propósito o contenido del archivo..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-slate-800 focus:outline-none focus:border-[#e10098] focus:bg-white"></textarea>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                        <label class="block font-bold text-slate-700 mb-1">Ruta o Enlace (Link) *</label>
-                        <input type="text" id="formLink" required placeholder="ejemplo_archivo.html" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-slate-800 focus:outline-none focus:border-[#e10098] focus:bg-white font-mono">
-                    </div>
-                    <div>
-                        <label class="block font-bold text-slate-700 mb-1">Categoría</label>
-                        <select id="formCategory" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-slate-800 focus:outline-none focus:border-[#e10098] focus:bg-white">
-                            <option value="Herramienta">Herramienta</option>
-                            <option value="Talento">Talento</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="flex items-center justify-end gap-2 pt-3 border-t border-slate-100">
-                    <button type="button" onclick="closeModal()" class="px-4 py-2 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 font-bold transition">
-                        Cancelar
-                    </button>
-                    <button type="submit" class="px-4 py-2 rounded-xl bg-[#e10098] hover:bg-[#b8007d] text-white font-bold transition shadow-md shadow-pink-500/20">
-                        Guardar Tarjeta
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
 
     <div id="toast" class="fixed bottom-6 right-6 transform translate-y-20 opacity-0 bg-slate-900 border border-pink-500 text-white text-xs font-semibold px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 z-50 pointer-events-none">
         <i class="fa-solid fa-check text-emerald-400 text-sm"></i>
         <span id="toastMsg">Acción realizada con éxito</span>
     </div>
 
-    <script>
-        // Dataset containing the 3 deliverables
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDocs, collection, onSnapshot, writeBatch } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Tarjetas iniciales base
         const initialCards = [
             {
                 id: 'card-1',
@@ -249,7 +201,8 @@
                 category: 'Herramienta',
                 icon: 'fa-clipboard-check',
                 iconBg: 'bg-purple-50 text-[#833177]',
-                badgeColor: 'bg-purple-50 text-[#833177] border-purple-200'
+                badgeColor: 'bg-purple-50 text-[#833177] border-purple-200',
+                createdAt: 1000
             },
             {
                 id: 'card-2',
@@ -259,7 +212,8 @@
                 category: 'Talento',
                 icon: 'fa-shield-heart',
                 iconBg: 'bg-pink-50 text-[#e10098]',
-                badgeColor: 'bg-pink-50 text-[#e10098] border-pink-200'
+                badgeColor: 'bg-pink-50 text-[#e10098] border-pink-200',
+                createdAt: 2000
             },
             {
                 id: 'card-3',
@@ -269,45 +223,84 @@
                 category: 'Talento',
                 icon: 'fa-file-signature',
                 iconBg: 'bg-blue-50 text-blue-600',
-                badgeColor: 'bg-blue-50 text-blue-700 border-blue-200'
+                badgeColor: 'bg-blue-50 text-blue-700 border-blue-200',
+                createdAt: 3000
             }
         ];
 
         let activeCategory = 'ALL';
         let allCards = [];
+        let db = null;
+        let auth = null;
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'glue-ux-hub';
+        const collectionName = 'hub_cards';
 
-        function loadCards() {
-            const saved = localStorage.getItem('glue_ux_cards_v3');
-            if (saved) {
-                try {
-                    allCards = JSON.parse(saved);
-                } catch(e) {
+        async function initStorage() {
+            if (typeof __firebase_config === 'undefined') {
+                const saved = localStorage.getItem('glue_ux_cards_v3');
+                if (saved) {
+                    try { allCards = JSON.parse(saved); } catch(e) { allCards = [...initialCards]; }
+                } else {
                     allCards = [...initialCards];
                 }
-            } else {
-                allCards = [...initialCards];
-                saveCardsToStorage();
+                renderCards();
+                return;
             }
-            renderCards();
+
+            try {
+                const firebaseConfig = JSON.parse(__firebase_config);
+                const app = initializeApp(firebaseConfig);
+                db = getFirestore(app);
+                auth = getAuth(app);
+
+                if (typeof __initial_auth_token !== 'undefined') {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } else {
+                    await signInAnonymously(auth);
+                }
+
+                if (!auth.currentUser) return;
+
+                const hubColRef = collection(db, 'artifacts', appId, 'public', 'data', collectionName);
+                const snapshot = await getDocs(hubColRef);
+
+                if (snapshot.empty) {
+                    const batch = writeBatch(db);
+                    initialCards.forEach(card => {
+                        const cardRef = doc(db, 'artifacts', appId, 'public', 'data', collectionName, card.id);
+                        batch.set(cardRef, card);
+                    });
+                    await batch.commit();
+                }
+
+                onSnapshot(hubColRef, (qs) => {
+                    const loaded = [];
+                    qs.forEach(docSnap => loaded.push({ id: docSnap.id, ...docSnap.data() }));
+                    loaded.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+                    allCards = loaded;
+                    renderCards();
+                }, (err) => {
+                    console.error("Error al sincronizar tarjetas:", err);
+                });
+            } catch (err) {
+                console.error("Error inicializando almacenamiento en la nube:", err);
+                allCards = [...initialCards];
+                renderCards();
+            }
         }
 
-        function saveCardsToStorage() {
-            localStorage.setItem('glue_ux_cards_v3', JSON.stringify(allCards));
-        }
-
-        function renderCards() {
+        window.renderCards = function() {
             const grid = document.getElementById('cardsGrid');
             const emptyState = document.getElementById('emptyState');
             const searchVal = document.getElementById('searchInput').value.toLowerCase().trim();
 
             const filtered = allCards.filter(card => {
                 const matchesSearch = 
-                    card.title.toLowerCase().includes(searchVal) ||
-                    card.description.toLowerCase().includes(searchVal) ||
-                    card.category.toLowerCase().includes(searchVal);
+                    (card.title || '').toLowerCase().includes(searchVal) ||
+                    (card.description || '').toLowerCase().includes(searchVal) ||
+                    (card.category || '').toLowerCase().includes(searchVal);
                 
                 const matchesCategory = (activeCategory === 'ALL' || card.category === activeCategory);
-
                 return matchesSearch && matchesCategory;
             });
 
@@ -324,7 +317,6 @@
             grid.innerHTML = filtered.map(card => `
                 <article class="hub-card p-6 h-full" id="${card.id}">
                     <div>
-                        <!-- Header Card -->
                         <div class="flex items-start justify-between gap-3 mb-4">
                             <div class="w-12 h-12 rounded-2xl ${card.iconBg || 'bg-pink-50 text-[#e10098]'} flex items-center justify-center text-xl shadow-sm flex-shrink-0">
                                 <i class="fa-solid ${card.icon || 'fa-file-code'}"></i>
@@ -334,7 +326,6 @@
                             </span>
                         </div>
 
-                        <!-- Card Content -->
                         <h3 class="font-heading font-bold text-base text-slate-900 leading-snug mb-2 hover:text-[#e10098] transition">
                             <a href="${card.link}" target="_blank" rel="noopener noreferrer">${card.title}</a>
                         </h3>
@@ -343,7 +334,6 @@
                         </p>
                     </div>
 
-                    <!-- Card Actions & CTA -->
                     <div class="pt-4 border-t border-slate-100 flex items-center justify-between gap-3 mt-auto">
                         <span class="text-[11px] font-mono text-slate-400 truncate max-w-[140px]" title="${card.link}">
                             <i class="fa-regular fa-file text-[10px] mr-1"></i>${card.link}
@@ -361,13 +351,13 @@
                     </div>
                 </article>
             `).join('');
-        }
+        };
 
-        function filterCards() {
+        window.filterCards = function() {
             renderCards();
-        }
+        };
 
-        function setCategory(cat) {
+        window.setCategory = function(cat) {
             activeCategory = cat;
             document.querySelectorAll('.category-btn').forEach(btn => {
                 if (btn.getAttribute('data-cat') === cat) {
@@ -377,60 +367,9 @@
                 }
             });
             renderCards();
-        }
+        };
 
-        function openModal() {
-            document.getElementById('newCardModal').classList.remove('hidden');
-            document.getElementById('formTitle').focus();
-        }
-
-        function closeModal() {
-            document.getElementById('newCardModal').classList.add('hidden');
-            document.getElementById('newCardForm').reset();
-        }
-
-        function handleCreateCard(e) {
-            e.preventDefault();
-            const title = document.getElementById('formTitle').value.trim();
-            const desc = document.getElementById('formDesc').value.trim();
-            const link = document.getElementById('formLink').value.trim();
-            const category = document.getElementById('formCategory').value;
-
-            if (!title || !link) return;
-
-            let icon = 'fa-file-code';
-            let iconBg = 'bg-pink-50 text-[#e10098]';
-            let badgeColor = 'bg-pink-50 text-[#e10098] border-pink-200';
-
-            if (category === 'Herramienta') {
-                icon = 'fa-table-cells';
-                iconBg = 'bg-emerald-50 text-emerald-600';
-                badgeColor = 'bg-emerald-50 text-emerald-700 border-emerald-200';
-            } else if (category === 'Talento') {
-                icon = 'fa-user-check';
-                iconBg = 'bg-blue-50 text-blue-600';
-                badgeColor = 'bg-blue-50 text-blue-700 border-blue-200';
-            }
-
-            const newCard = {
-                id: 'card-' + Date.now(),
-                title: title,
-                description: desc,
-                link: link,
-                category: category,
-                icon: icon,
-                iconBg: iconBg,
-                badgeColor: badgeColor
-            };
-
-            allCards.unshift(newCard);
-            saveCardsToStorage();
-            closeModal();
-            renderCards();
-            showToast('Nuevo documento enlazado con éxito');
-        }
-
-        function copyCardLink(link) {
+        window.copyCardLink = function(link) {
             const temp = document.createElement('input');
             temp.value = window.location.href.replace(/index\.html.*/, '') + link;
             document.body.appendChild(temp);
@@ -438,10 +377,10 @@
             document.execCommand('copy');
             document.body.removeChild(temp);
             showToast(`Enlace copiado: ${link}`);
-        }
+        };
 
         let toastTimer;
-        function showToast(msg) {
+        window.showToast = function(msg) {
             const toast = document.getElementById('toast');
             document.getElementById('toastMsg').textContent = msg;
             toast.classList.remove('translate-y-20', 'opacity-0');
@@ -452,16 +391,10 @@
                 toast.classList.remove('translate-y-0', 'opacity-100');
                 toast.classList.add('translate-y-20', 'opacity-0');
             }, 3000);
-        }
+        };
 
-        // Close modal on Escape key
-        window.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
-        });
-
-        // Initialize on load
         window.onload = function() {
-            loadCards();
+            initStorage();
         };
     </script>
 </body>
