@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UX/UI Management — Hub Central GLUE</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Lato:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --brand-pink: #e10098;
+            --brand-pink-dark: #b8007d;
+            --brand-pink-soft: #fff1f9;
+            --brand-puerto: #833177;
+            --slate-bg: #f8fafc;
+            --card-border: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--slate-bg);
+            color: #1e293b;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2, h3, h4, h5, .font-heading {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .gradient-title {
+            background: linear-gradient(135deg, #0f172a 0%, #833177 50%, #e10098 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hub-card {
+            background: #ffffff;
+            border: 1px solid var(--card-border);
+            border-radius: 1.25rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hub-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--brand-puerto), var(--brand-pink));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .hub-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(225, 0, 152, 0.35);
+            box-shadow: 0 20px 25px -5px rgba(225, 0, 152, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+        }
+
+        .hub-card:hover::before {
+            opacity: 1;
+        }
+
+        .badge-tag {
+            font-family: 'Poppins', sans-serif;
+            font-size: 10.5px;
+            letter-spacing: 0.6px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        #toast {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+    </style>
+</head>
+<body class="selection:bg-[#e10098] selection:text-white">
+
+    <nav class="border-b border-slate-200 bg-white/95 backdrop-blur-md sticky top-0 z-40 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#833177] to-[#e10098] flex items-center justify-center text-white font-black text-xl shadow-md shadow-pink-500/20">
+                    G
+                </div>
+                <div>
+                    <span class="text-[10px] font-extrabold tracking-widest text-[#e10098] uppercase block">GLUE Design System</span>
+                    <h1 class="text-sm font-bold text-slate-900 tracking-tight">Liverpool Digital • UX/UI Hub</h1>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2 sm:gap-3">
+                <span id="cardCounterBadge" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-pink-50 border border-pink-200 text-[#e10098]">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <span id="activeCount">2 Activos</span>
+                </span>
+                <button onclick="openModal()" class="bg-[#e10098] hover:bg-[#b8007d] text-white text-xs font-bold px-4 py-2 rounded-xl transition flex items-center gap-2 shadow-md shadow-pink-500/20 active:scale-95">
+                    <i class="fa-solid fa-plus"></i> Registrar HTML
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 flex-grow space-y-10">
+        
+        <!-- Header & Bienvenida -->
+        <header class="text-center max-w-3xl mx-auto space-y-4">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-pink-50 border border-pink-200 text-[#e10098] text-xs font-bold uppercase tracking-wider shadow-sm">
+                <i class="fa-solid fa-compass-drafting"></i> Índice General de Entregables
+            </div>
+
+            <h2 class="text-3xl sm:text-5xl font-extrabold font-heading tracking-tight leading-tight gradient-title">
+                UX/UI Management
+            </h2>
+
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
+                Bienvenido a este espacio centralizado de consulta, revisión y gobernanza. Aquí encontrarás los accesos directos a todas las presentaciones ejecutivas, herramientas interactivas, blueprints de talento y paneles de seguimiento generados para el ecosistema <strong class="text-slate-900 font-bold">GLUE Design System</strong> y la Dirección de UX de Liverpool.
+            </p>
+        </header>
+
+        <section class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+            
+            <!-- Barra de búsqueda en tiempo real -->
+            <div class="relative w-full sm:max-w-md">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    oninput="filterCards()" 
+                    placeholder="Buscar por título, categoría o descripción..." 
+                    class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-2 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#e10098] focus:bg-white transition"
+                >
+            </div>
+
+            <!-- Filtro de categorías -->
+            <div class="flex items-center gap-2 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0" id="filterButtons">
+                <button onclick="setCategory('ALL')" class="category-btn active px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-[#e10098] text-white transition shadow-sm whitespace-nowrap" data-cat="ALL">
+                    Todos
+                </button>
+                <button onclick="setCategory('Presentación')" class="category-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition whitespace-nowrap" data-cat="Presentación">
+                    Presentaciones
+                </button>
+                <button onclick="setCategory('Herramienta')" class="category-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition whitespace-nowrap" data-cat="Herramienta">
+                    Herramientas & Data
+                </button>
+                <button onclick="setCategory('Talento')" class="category-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition whitespace-nowrap" data-cat="Talento">
+                    Talento & RRHH
+                </button>
+            </div>
+        </section>
+
+        <section>
+            <div id="cardsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Cards will be populated dynamically by JavaScript -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="hidden text-center py-16 bg-white rounded-2xl border border-slate-200">
+                <div class="w-12 h-12 rounded-2xl bg-pink-50 text-[#e10098] flex items-center justify-center mx-auto mb-3 text-lg">
+                    <i class="fa-solid fa-folder-open"></i>
+                </div>
+                <h4 class="text-sm font-bold text-slate-900 font-heading">No se encontraron entregables</h4>
+                <p class="text-xs text-slate-500 mt-1">Prueba con otro término de búsqueda o categoría.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <span class="uppercase tracking-widest text-[11px] font-semibold text-slate-600">GLUE Design System 2026 • Liverpool Digital</span>
+            <span class="text-[11px]">UX/UI Management Hub • El Puerto de Liverpool</span>
+        </div>
+    </footer>
+
+    <div id="newCardModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-2xl max-w-lg w-full p-6 space-y-5 animate-fadeIn">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-lg bg-pink-50 text-[#e10098] flex items-center justify-center text-sm font-bold">
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-sm font-heading">Agregar Nuevo Entregable HTML</h3>
+                </div>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600 text-sm">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <form id="newCardForm" onsubmit="handleCreateCard(event)" class="space-y-4 text-xs">
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">Título del Documento *</label>
+                    <input type="text" id="formTitle" required placeholder="Ej. UI Kit Checkout Redesign" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-slate-800 focus:outline-none focus:border-[#e10098] focus:bg-white">
+                </div>
+
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">Descripción Breve *</label>
+                    <textarea id="formDesc" rows="3" required placeholder="Explica brevemente el propósito o contenido del archivo..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-slate-800 focus:outline-none focus:border-[#e10098] focus:bg-white"></textarea>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">Ruta o Enlace (Link) *</label>
+                        <input type="text" id="formLink" required placeholder="ejemplo_archivo.html" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-slate-800 focus:outline-none focus:border-[#e10098] focus:bg-white font-mono">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">Categoría</label>
+                        <select id="formCategory" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-slate-800 focus:outline-none focus:border-[#e10098] focus:bg-white">
+                            <option value="Presentación">Presentación</option>
+                            <option value="Herramienta">Herramienta</option>
+                            <option value="Talento">Talento</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-end gap-2 pt-3 border-t border-slate-100">
+                    <button type="button" onclick="closeModal()" class="px-4 py-2 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 font-bold transition">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="px-4 py-2 rounded-xl bg-[#e10098] hover:bg-[#b8007d] text-white font-bold transition shadow-md shadow-pink-500/20">
+                        Guardar Tarjeta
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="toast" class="fixed bottom-6 right-6 transform translate-y-20 opacity-0 bg-slate-900 border border-pink-500 text-white text-xs font-semibold px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 z-50 pointer-events-none">
+        <i class="fa-solid fa-check text-emerald-400 text-sm"></i>
+        <span id="toastMsg">Acción realizada con éxito</span>
+    </div>
+
+    <script>
+        // Dataset containing only the 2 requested deliverables
+        const initialCards = [
+            {
+                id: 'card-1',
+                title: 'Auditoría Figma',
+                description: 'Este espacio ayudará a calificar y evaluar los documentos de Figma, colocando una calificación y comentarios para que los consultores sepan cómo mejorar.',
+                link: '/auditoria_figma.html',
+                category: 'Herramienta',
+                icon: 'fa-clipboard-check',
+                iconBg: 'bg-purple-50 text-[#833177]',
+                badgeColor: 'bg-purple-50 text-[#833177] border-purple-200'
+            },
+            {
+                id: 'card-2',
+                title: 'Plan Intership',
+                description: 'Información y seguimiento al plan para mejorar los UI Kits de crédito y seguroes.',
+                link: '/glue_intership.html',
+                category: 'Talento',
+                icon: 'fa-shield-heart',
+                iconBg: 'bg-pink-50 text-[#e10098]',
+                badgeColor: 'bg-pink-50 text-[#e10098] border-pink-200'
+            }
+        ];
+
+        let activeCategory = 'ALL';
+        let allCards = [];
+
+        function loadCards() {
+            const saved = localStorage.getItem('glue_ux_cards_v2');
+            if (saved) {
+                try {
+                    allCards = JSON.parse(saved);
+                } catch(e) {
+                    allCards = [...initialCards];
+                }
+            } else {
+                allCards = [...initialCards];
+                saveCardsToStorage();
+            }
+            renderCards();
+        }
+
+        function saveCardsToStorage() {
+            localStorage.setItem('glue_ux_cards_v2', JSON.stringify(allCards));
+        }
+
+        function renderCards() {
+            const grid = document.getElementById('cardsGrid');
+            const emptyState = document.getElementById('emptyState');
+            const searchVal = document.getElementById('searchInput').value.toLowerCase().trim();
+
+            const filtered = allCards.filter(card => {
+                const matchesSearch = 
+                    card.title.toLowerCase().includes(searchVal) ||
+                    card.description.toLowerCase().includes(searchVal) ||
+                    card.category.toLowerCase().includes(searchVal);
+                
+                const matchesCategory = (activeCategory === 'ALL' || card.category === activeCategory);
+
+                return matchesSearch && matchesCategory;
+            });
+
+            document.getElementById('activeCount').textContent = `${filtered.length} Activos`;
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+
+            grid.innerHTML = filtered.map(card => `
+                <article class="hub-card p-6 h-full" id="${card.id}">
+                    <div>
+                        <!-- Header Card -->
+                        <div class="flex items-start justify-between gap-3 mb-4">
+                            <div class="w-12 h-12 rounded-2xl ${card.iconBg || 'bg-pink-50 text-[#e10098]'} flex items-center justify-center text-xl shadow-sm flex-shrink-0">
+                                <i class="fa-solid ${card.icon || 'fa-file-code'}"></i>
+                            </div>
+                            <span class="badge-tag px-2.5 py-1 rounded-lg border ${card.badgeColor || 'bg-slate-100 text-slate-700 border-slate-200'}">
+                                ${card.category}
+                            </span>
+                        </div>
+
+                        <!-- Card Content -->
+                        <h3 class="font-heading font-bold text-base text-slate-900 leading-snug mb-2 hover:text-[#e10098] transition">
+                            <a href="${card.link}" target="_blank" rel="noopener noreferrer">${card.title}</a>
+                        </h3>
+                        <p class="text-xs text-slate-600 leading-relaxed line-clamp-3 mb-6">
+                            ${card.description}
+                        </p>
+                    </div>
+
+                    <!-- Card Actions & CTA -->
+                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between gap-3 mt-auto">
+                        <span class="text-[11px] font-mono text-slate-400 truncate max-w-[140px]" title="${card.link}">
+                            <i class="fa-regular fa-file text-[10px] mr-1"></i>${card.link}
+                        </span>
+
+                        <div class="flex items-center gap-2">
+                            <button onclick="copyCardLink('${card.link}')" title="Copiar enlace" class="w-8 h-8 rounded-xl border border-slate-200 text-slate-500 hover:text-[#e10098] hover:border-pink-300 hover:bg-pink-50/50 flex items-center justify-center transition active:scale-95 text-xs">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                            <a href="${card.link}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-[#e10098] hover:bg-[#b8007d] text-white text-xs font-bold px-4 py-2 rounded-xl transition shadow-md shadow-pink-500/15 active:scale-95">
+                                <span>Abrir</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        function filterCards() {
+            renderCards();
+        }
+
+        function setCategory(cat) {
+            activeCategory = cat;
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                if (btn.getAttribute('data-cat') === cat) {
+                    btn.className = 'category-btn active px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-[#e10098] text-white transition shadow-sm whitespace-nowrap';
+                } else {
+                    btn.className = 'category-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition whitespace-nowrap';
+                }
+            });
+            renderCards();
+        }
+
+        function openModal() {
+            document.getElementById('newCardModal').classList.remove('hidden');
+            document.getElementById('formTitle').focus();
+        }
+
+        function closeModal() {
+            document.getElementById('newCardModal').classList.add('hidden');
+            document.getElementById('newCardForm').reset();
+        }
+
+        function handleCreateCard(e) {
+            e.preventDefault();
+            const title = document.getElementById('formTitle').value.trim();
+            const desc = document.getElementById('formDesc').value.trim();
+            const link = document.getElementById('formLink').value.trim();
+            const category = document.getElementById('formCategory').value;
+
+            if (!title || !link) return;
+
+            let icon = 'fa-file-code';
+            let iconBg = 'bg-pink-50 text-[#e10098]';
+            let badgeColor = 'bg-pink-50 text-[#e10098] border-pink-200';
+
+            if (category === 'Herramienta') {
+                icon = 'fa-table-cells';
+                iconBg = 'bg-emerald-50 text-emerald-600';
+                badgeColor = 'bg-emerald-50 text-emerald-700 border-emerald-200';
+            } else if (category === 'Talento') {
+                icon = 'fa-user-check';
+                iconBg = 'bg-blue-50 text-blue-600';
+                badgeColor = 'bg-blue-50 text-blue-700 border-blue-200';
+            }
+
+            const newCard = {
+                id: 'card-' + Date.now(),
+                title: title,
+                description: desc,
+                link: link,
+                category: category,
+                icon: icon,
+                iconBg: iconBg,
+                badgeColor: badgeColor
+            };
+
+            allCards.unshift(newCard);
+            saveCardsToStorage();
+            closeModal();
+            renderCards();
+            showToast('Nuevo documento enlazado con éxito');
+        }
+
+        function copyCardLink(link) {
+            const temp = document.createElement('input');
+            temp.value = window.location.href.replace(/index\.html.*/, '') + link;
+            document.body.appendChild(temp);
+            temp.select();
+            document.execCommand('copy');
+            document.body.removeChild(temp);
+            showToast(`Enlace copiado: ${link}`);
+        }
+
+        let toastTimer;
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').textContent = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // Close modal on Escape key
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // Initialize on load
+        window.onload = function() {
+            loadCards();
+        };
+    </script>
+</body>
+</html>
