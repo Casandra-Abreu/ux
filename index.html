@@ -99,14 +99,14 @@
                 </div>
                 <div>
                     <span class="text-[10px] font-extrabold tracking-widest text-[#e10098] uppercase block">GLUE Design System</span>
-                    <h1 class="text-sm font-bold text-slate-900 tracking-tight">Liverpool Digital • UX/UI Hub</h1>
+                    <h1 class="text-sm font-bold text-slate-900 tracking-tight">Liverpool Digital • UX/UI Portfolio Hub</h1>
                 </div>
             </div>
 
             <div class="flex items-center gap-2 sm:gap-3">
                 <span id="cardCounterBadge" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-pink-50 border border-pink-200 text-[#e10098]">
                     <i class="fa-solid fa-layer-group"></i>
-                    <span id="activeCount">2 Activos</span>
+                    <span id="activeCount">3 Activos</span>
                 </span>
                 <button onclick="openModal()" class="bg-[#e10098] hover:bg-[#b8007d] text-white text-xs font-bold px-4 py-2 rounded-xl transition flex items-center gap-2 shadow-md shadow-pink-500/20 active:scale-95">
                     <i class="fa-solid fa-plus"></i> Registrar HTML
@@ -150,9 +150,6 @@
             <div class="flex items-center gap-2 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0" id="filterButtons">
                 <button onclick="setCategory('ALL')" class="category-btn active px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-[#e10098] text-white transition shadow-sm whitespace-nowrap" data-cat="ALL">
                     Todos
-                </button>
-                <button onclick="setCategory('Presentación')" class="category-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition whitespace-nowrap" data-cat="Presentación">
-                    Presentaciones
                 </button>
                 <button onclick="setCategory('Herramienta')" class="category-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition whitespace-nowrap" data-cat="Herramienta">
                     Herramientas & Data
@@ -220,7 +217,6 @@
                     <div>
                         <label class="block font-bold text-slate-700 mb-1">Categoría</label>
                         <select id="formCategory" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-slate-800 focus:outline-none focus:border-[#e10098] focus:bg-white">
-                            <option value="Presentación">Presentación</option>
                             <option value="Herramienta">Herramienta</option>
                             <option value="Talento">Talento</option>
                         </select>
@@ -245,7 +241,7 @@
     </div>
 
     <script>
-        // Dataset containing only the 2 requested deliverables
+        // Dataset containing the 3 deliverables
         const initialCards = [
             {
                 id: 'card-1',
@@ -266,16 +262,16 @@
                 icon: 'fa-shield-heart',
                 iconBg: 'bg-pink-50 text-[#e10098]',
                 badgeColor: 'bg-pink-50 text-[#e10098] border-pink-200'
-            }
-             {
+            },
+            {
                 id: 'card-3',
-                title: 'Correos para contratos',
+                title: 'Correos de contrato',
                 description: 'Plantillas de correo para los 3 pasos del proceso de contratación: estimación, confirmación, solicitud de pago.',
                 link: 'contratos.html',
                 category: 'Talento',
-                icon: 'fa-shield-heart',
-                iconBg: 'bg-pink-50 text-[#e10098]',
-                badgeColor: 'bg-pink-50 text-[#e10098] border-pink-200'
+                icon: 'fa-file-signature',
+                iconBg: 'bg-blue-50 text-blue-600',
+                badgeColor: 'bg-blue-50 text-blue-700 border-blue-200'
             }
         ];
 
@@ -283,7 +279,7 @@
         let allCards = [];
 
         function loadCards() {
-            const saved = localStorage.getItem('glue_ux_cards_v2');
+            const saved = localStorage.getItem('glue_ux_cards_v3');
             if (saved) {
                 try {
                     allCards = JSON.parse(saved);
@@ -298,7 +294,7 @@
         }
 
         function saveCardsToStorage() {
-            localStorage.setItem('glue_ux_cards_v2', JSON.stringify(allCards));
+            localStorage.setItem('glue_ux_cards_v3', JSON.stringify(allCards));
         }
 
         function renderCards() {
@@ -341,8 +337,8 @@
                         </div>
 
                         <!-- Card Content -->
-                        <h3 class="font-heading font-bold text-base text-slate-900 leading-snug mb-2">
-                            ${card.title}
+                        <h3 class="font-heading font-bold text-base text-slate-900 leading-snug mb-2 hover:text-[#e10098] transition">
+                            <a href="${card.link}" target="_blank" rel="noopener noreferrer">${card.title}</a>
                         </h3>
                         <p class="text-xs text-slate-600 leading-relaxed line-clamp-3 mb-6">
                             ${card.description}
@@ -350,11 +346,20 @@
                     </div>
 
                     <!-- Card Actions & CTA -->
-                    <div class="pt-4 border-t border-slate-100 flex items-center justify-end gap-3 mt-auto">
-                        <a href="${card.link}" class="inline-flex items-center gap-2 bg-[#e10098] hover:bg-[#b8007d] text-white text-xs font-bold px-4 py-2 rounded-xl transition shadow-md shadow-pink-500/15 active:scale-95">
-                            <span>Abrir</span>
-                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                        </a>
+                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between gap-3 mt-auto">
+                        <span class="text-[11px] font-mono text-slate-400 truncate max-w-[140px]" title="${card.link}">
+                            <i class="fa-regular fa-file text-[10px] mr-1"></i>${card.link}
+                        </span>
+
+                        <div class="flex items-center gap-2">
+                            <button onclick="copyCardLink('${card.link}')" title="Copiar enlace" class="w-8 h-8 rounded-xl border border-slate-200 text-slate-500 hover:text-[#e10098] hover:border-pink-300 hover:bg-pink-50/50 flex items-center justify-center transition active:scale-95 text-xs">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                            <a href="${card.link}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-[#e10098] hover:bg-[#b8007d] text-white text-xs font-bold px-4 py-2 rounded-xl transition shadow-md shadow-pink-500/15 active:scale-95">
+                                <span>Abrir</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                            </a>
+                        </div>
                     </div>
                 </article>
             `).join('');
@@ -425,6 +430,16 @@
             closeModal();
             renderCards();
             showToast('Nuevo documento enlazado con éxito');
+        }
+
+        function copyCardLink(link) {
+            const temp = document.createElement('input');
+            temp.value = window.location.href.replace(/index\.html.*/, '') + link;
+            document.body.appendChild(temp);
+            temp.select();
+            document.execCommand('copy');
+            document.body.removeChild(temp);
+            showToast(`Enlace copiado: ${link}`);
         }
 
         let toastTimer;
