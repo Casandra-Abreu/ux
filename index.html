@@ -102,7 +102,8 @@
             <div class="flex items-center gap-2 sm:gap-3">
                 <span id="cardCounterBadge" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-pink-50 border border-pink-200 text-[#e10098]">
                     <i class="fa-solid fa-layer-group"></i>
-                    <span id="activeCount">4 Activos</span>
+                    <!-- Contador actualizado -->
+                    <span id="activeCount">3 Activos</span>
                 </span>
             </div>
         </div>
@@ -150,7 +151,6 @@
                 <button onclick="setCategory('Talento')" class="category-btn px-4 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-600 hover:bg-slate-200 transition whitespace-nowrap tracking-wide" data-cat="Talento">
                     Talento
                 </button>
-                <!-- Filtro para la nueva Card -->
                 <button onclick="setCategory('Presentación')" class="category-btn px-4 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-600 hover:bg-slate-200 transition whitespace-nowrap tracking-wide" data-cat="Presentación">
                     Presentaciones
                 </button>
@@ -176,7 +176,6 @@
 
     <footer class="border-t border-slate-200 bg-white py-6 text-center">
         <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <!-- Texto GLUE removido -->
             <span class="uppercase tracking-widest text-[10px] font-bold text-slate-400">Liverpool Digital 2026</span>
             <span class="text-[11px] font-medium text-slate-500">UX/UI Management Hub • El Puerto de Liverpool</span>
         </div>
@@ -192,7 +191,7 @@
         import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, doc, setDoc, getDocs, collection, onSnapshot, writeBatch } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Tarjetas base + Nueva tarjeta Hackathon26
+        // Tarjetas base (se eliminó la tarjeta de "Correos de contrato")
         const initialCards = [
             {
                 id: 'card-1',
@@ -217,20 +216,8 @@
                 createdAt: 2000
             },
             {
-                id: 'card-3',
-                title: 'Correos de contrato',
-                description: 'Plantillas de correo para los 3 pasos del proceso de contratación: estimación, confirmación, solicitud de pago.',
-                link: 'contratos.html',
-                category: 'Talento',
-                icon: 'fa-file-signature',
-                iconBg: 'bg-blue-50 text-blue-600',
-                badgeColor: 'bg-blue-50 text-blue-700 border-blue-200',
-                createdAt: 3000
-            },
-            {
                 id: 'card-4',
                 title: 'Hackathon26',
-                // Descripción resumida como se solicitó
                 description: 'Soluciones del Hackathon IT: descubriendo nuevas fronteras para el diseño de experiencias, interfaces adaptativas y flujos impulsados por IA.',
                 link: 'hackathon.html',
                 category: 'Presentación',
