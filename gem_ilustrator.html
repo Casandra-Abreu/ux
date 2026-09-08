@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía de Uso | GEM Ilustrador Liverpool</title>
+    <!-- Fuente moderna e iconos -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #e10098; /* Rosa Liverpool */
+            --primary-light: #fce6f5;
+            --primary-hover: #c00082;
+            --text-dark: #1a1a24;
+            --text-gray: #5a5a6a;
+            --bg-body: #f8f9fb;
+            --bg-surface: #ffffff;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --shadow-sm: 0 4px 6px rgba(0,0,0,0.03);
+            --shadow-lg: 0 20px 40px rgba(0,0,0,0.08);
+            --shadow-hover: 0 25px 50px rgba(225, 0, 152, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Contenedor Principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* --- HERO SECTION (2 Columnas) --- */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 40px;
+            min-height: 90vh;
+            padding: 40px 0;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .hero-text h1 span {
+            color: var(--primary);
+        }
+
+        .hero-text p {
+            font-size: 1.125rem;
+            color: var(--text-gray);
+            margin-bottom: 40px;
+            max-width: 90%;
+        }
+
+        .hero-image-container {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Botones */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 36px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 8px 20px rgba(225, 0, 152, 0.25);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(225, 0, 152, 0.35);
+        }
+
+        /* --- SECCIÓN DE PASOS (Tarjetas Interactivas) --- */
+        .steps-section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+        }
+
+        .steps-grid {
+            display: grid;
+            /* Ajustado a un mínimo de 300px para que las 5 tarjetas se acomoden mejor visualmente */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px;
+        }
+
+        .step-card {
+            background: var(--bg-surface);
+            padding: 40px 30px;
+            border-radius: var(--radius-lg);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0,0,0,0.02);
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .step-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary-light);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 120px;
+            font-weight: 800;
+            color: var(--primary-light);
+            opacity: 0.4;
+            z-index: -1;
+            transition: all 0.4s ease;
+        }
+
+        .step-card:hover .step-number {
+            transform: scale(1.1) rotate(-5deg);
+            opacity: 0.6;
+        }
+
+        .step-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .step-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Estilo especial para resaltar el quinto paso corporativo */
+        .step-card.special-step {
+            background: linear-gradient(145deg, #ffffff, #fff5fc);
+            border-left: 4px solid var(--primary);
+        }
+
+        /* --- PROMPT Y CODEPEN SECTION --- */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            padding: 40px 0 100px 0;
+        }
+
+        .card-panel {
+            background: var(--bg-surface);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .card-panel h3 {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .prompt-box {
+            background: var(--bg-body);
+            padding: 24px;
+            border-radius: var(--radius-md);
+            font-style: italic;
+            color: var(--text-dark);
+            border-left: 4px solid var(--primary);
+            font-size: 1.05rem;
+        }
+
+        .codepen-link {
+            display: block;
+            margin-top: 24px;
+            padding: 16px;
+            background-color: var(--text-dark);
+            color: white;
+            text-align: center;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+
+        .codepen-link:hover {
+            background-color: #000;
+        }
+
+        /* --- RESPONSIVIDAD --- */
+        @media (max-width: 992px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding-top: 60px;
+            }
+            .hero-text h1 { font-size: 2.8rem; }
+            .hero-text p { max-width: 100%; margin: 0 auto 30px auto; }
+            .tools-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- HEADER A 2 COLUMNAS -->
+        <header class="hero">
+            <div class="hero-text">
+                <h1>Crea ilustraciones <span>increíbles</span> al instante</h1>
+                <p>Bienvenido al GEM Ilustrador oficial. Diseña gráficos minimalistas con estilo lineal y manchas de color exactas para todas las marcas de El Puerto de Liverpool. Rápido, preciso y escalable.</p>
+                <a href="https://gemini.google.com/gem/1r4HP-glpqIqlXXfjVRghru6OH2y7EtPp?usp=sharing" target="_blank" class="btn btn-primary">Abrir GEM en Gemini</a>
+            </div>
+            
+            <div class="hero-image-container">
+                <!-- La imagen de referencia con animación flotante -->
+                <img src="https://casandra-abreu.github.io/ux/imagegem.jpeg" alt="Ejemplo de ilustración GEM">
+            </div>
+        </header>
+
+        <!-- SECCIÓN DE PASOS CREATIVOS -->
+        <section class="steps-section">
+            <h2 class="section-title">¿Cómo funciona?</h2>
+            
+            <div class="steps-grid">
+                <!-- Tarjeta 1 -->
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Imagina la Escena</h3>
+                    <p>Define personajes y acciones (ej. un joven en su laptop, recibiendo un paquete). Describe los objetos a su alrededor de forma sencilla.</p>
+                </div>
+                
+                <!-- Tarjeta 2 -->
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Elige tu Marca</h3>
+                    <p>Indica para qué marca es la imagen. El GEM adaptará automáticamente la mancha de color de fondo a los lineamientos visuales correspondientes.</p>
+                </div>
+                
+                <!-- Tarjeta 3 -->
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Agrega Detalles</h3>
+                    <p>Si la composición lo requiere, pide que se incluyan globos de diálogo o de pensamiento en español para darle más vida al gráfico.</p>
+                </div>
+                
+                <!-- Tarjeta 4 -->
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>Genera y Ajusta</h3>
+                    <p>Ejecuta tu prompt. Si necesitas un color HEX súper específico o ajustar un detalle, simplemente pídeselo al GEM en la misma conversación.</p>
+                </div>
+
+                <!-- Tarjeta 5 (NUEVA) -->
+                <div class="step-card special-step">
+                    <div class="step-number">5</div>
+                    <h3>Reutiliza el Chat</h3>
+                    <p>💡 <strong>Tip corporativo:</strong> Como las cuentas de trabajo no permiten borrar el historial de Gemini, te recomendamos generar todas las versiones y nuevas ilustraciones dentro de este mismo chat para mantener limpio tu espacio.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE HERRAMIENTAS (Prompt y Color) -->
+        <section class="tools-grid">
+            
+            <div class="card-panel">
+                <h3>✍️ El Prompt Perfecto</h3>
+                <p style="margin-bottom: 20px; color: var(--text-gray);">Copia esta estructura para obtener los mejores resultados a la primera:</p>
+                <div class="prompt-box">
+                    "Crea una ilustración con un joven sonriendo mientras sostiene una bolsa de compras. A su lado hay un carrito de metal. Pon un globo de pensamiento con un símbolo de exclamación. Usa como fondo la mancha de color de la marca Blue Gap."
+                </div>
+            </div>
+
+            <div class="card-panel">
+                <h3>🎨 Personalización de Color</h3>
+                <p style="margin-bottom: 20px; color: var(--text-gray);">El GEM tiene colores por defecto, pero si necesitas forzar un tono exacto (como el valor 50 o 75 de una marca), busca el código HEX en nuestra paleta oficial interactiva.</p>
+                
+                <a href="https://codepen.io/Sa-l-Ulises-Hern-ndez-Cruz/pen/JoPrELM" target="_blank" class="codepen-link">Explorar Tokens en CodePen →</a>
+                
+                <p style="margin-top: 15px; font-size: 0.9rem; color: var(--text-gray);">
+                    <strong>Tip:</strong> Dile al GEM: <em>"Usa exactamente el código HEX #XXXXXX para la mancha de fondo".</em>
+                </p>
+            </div>
+
+        </section>
+
+    </div>
+
+</body>
+</html>
