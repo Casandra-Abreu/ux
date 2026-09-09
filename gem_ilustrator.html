@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guía de Uso | GEM Ilustrador Liverpool</title>
     <!-- Fuente moderna e iconos -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #e10098; /* Rosa Liverpool */
@@ -20,6 +20,9 @@
             --shadow-sm: 0 4px 6px rgba(0,0,0,0.03);
             --shadow-lg: 0 20px 40px rgba(0,0,0,0.08);
             --shadow-hover: 0 25px 50px rgba(225, 0, 152, 0.15);
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
         }
 
         * {
@@ -29,6 +32,10 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
+        html {
+            scroll-behavior: smooth; /* Activa el scroll suave */
+        }
+
         body {
             background-color: var(--bg-body);
             color: var(--text-dark);
@@ -36,21 +43,68 @@
             overflow-x: hidden;
         }
 
-        /* Contenedor Principal */
+        /* --- NAVBAR (MENÚ DE NAVEGACIÓN) --- */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-sm);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 5%;
         }
 
-        /* --- HERO SECTION (2 Columnas) --- */
+        /* Compensación para que el menú fixed no tape los títulos al hacer click */
+        section {
+            scroll-margin-top: 90px;
+            padding: 60px 0;
+        }
+
+        /* --- HERO SECTION --- */
         .hero {
             display: grid;
             grid-template-columns: 1fr 1fr;
             align-items: center;
             gap: 40px;
-            min-height: 90vh;
-            padding: 40px 0;
+            min-height: 85vh;
+            padding-top: 40px;
         }
 
         .hero-text h1 {
@@ -119,21 +173,63 @@
             box-shadow: 0 12px 25px rgba(225, 0, 152, 0.35);
         }
 
-        /* --- SECCIÓN DE PASOS (Tarjetas Interactivas) --- */
-        .steps-section {
-            padding: 80px 0;
-        }
-
+        /* --- TÍTULOS DE SECCIÓN --- */
         .section-title {
             text-align: center;
             font-size: 2.5rem;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
+            font-weight: 800;
         }
 
+        /* --- EJEMPLOS DE PROMPTS --- */
+        .ejemplos-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        
+        .card-panel {
+            background: var(--bg-surface);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .card-panel h3 {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+        }
+
+        .prompt-box {
+            background: var(--bg-body);
+            padding: 24px;
+            border-radius: var(--radius-md);
+            font-style: italic;
+            color: var(--text-dark);
+            border-left: 4px solid var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .prompt-label {
+            font-weight: 800;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            color: var(--primary);
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: block;
+            font-style: normal;
+        }
+
+        /* --- SECCIÓN DE PASOS --- */
         .steps-grid {
             display: grid;
-            /* Ajustado a un mínimo de 300px para que las 5 tarjetas se acomoden mejor visualmente */
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
             gap: 30px;
         }
 
@@ -149,7 +245,6 @@
             z-index: 1;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
         }
 
         .step-card:hover {
@@ -186,54 +281,120 @@
             font-size: 0.95rem;
         }
 
-        /* Estilo especial para resaltar el quinto paso corporativo */
         .step-card.special-step {
             background: linear-gradient(145deg, #ffffff, #fff5fc);
             border-left: 4px solid var(--primary);
         }
 
-        /* --- PROMPT Y CODEPEN SECTION --- */
-        .tools-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            padding: 40px 0 100px 0;
+        /* --- MEJORES PRÁCTICAS --- */
+        .formula-banner {
+            background: linear-gradient(135deg, var(--primary), #ff4db8);
+            color: white;
+            padding: 40px 30px;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-lg);
         }
 
-        .card-panel {
+        .formula-banner h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .formula-banner .formula-text {
+            font-size: 1.4rem;
+            font-weight: 700;
+            background: rgba(255,255,255,0.2);
+            padding: 15px 20px;
+            border-radius: var(--radius-md);
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        .dos-donts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .bp-card {
             background: var(--bg-surface);
             padding: 40px;
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-sm);
         }
 
-        .card-panel h3 {
-            margin-bottom: 20px;
+        .do-card { border-top: 6px solid var(--success); }
+        .dont-card { border-top: 6px solid var(--danger); }
+
+        .bp-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
-        .prompt-box {
-            background: var(--bg-body);
-            padding: 24px;
-            border-radius: var(--radius-md);
-            font-style: italic;
-            color: var(--text-dark);
-            border-left: 4px solid var(--primary);
-            font-size: 1.05rem;
+        .bp-list { list-style: none; }
+        
+        .bp-list li {
+            margin-bottom: 18px;
+            padding-left: 35px;
+            position: relative;
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+        
+        .bp-list li strong { color: var(--text-dark); }
+
+        .do-list li::before {
+            content: '✅';
+            position: absolute;
+            left: 0;
+            top: 2px;
         }
 
+        .dont-list li::before {
+            content: '❌';
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+
+        .iteracion-card {
+            background: var(--bg-surface);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            border-left: 6px solid var(--warning);
+        }
+        
+        .iteracion-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+        
+        .iteracion-card ul {
+            margin-top: 15px;
+            padding-left: 20px;
+            color: var(--text-gray);
+        }
+        
+        .iteracion-card li { margin-bottom: 10px; }
+
+        /* --- COLORES --- */
         .codepen-link {
-            display: block;
+            display: inline-block;
             margin-top: 24px;
-            padding: 16px;
+            padding: 16px 32px;
             background-color: var(--text-dark);
             color: white;
             text-align: center;
             border-radius: var(--radius-md);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             transition: background 0.3s ease;
         }
 
@@ -243,99 +404,165 @@
 
         /* --- RESPONSIVIDAD --- */
         @media (max-width: 992px) {
+            .navbar { flex-direction: column; gap: 15px; }
+            .nav-links { flex-wrap: wrap; justify-content: center; }
             .hero {
                 grid-template-columns: 1fr;
                 text-align: center;
-                padding-top: 60px;
+                padding-top: 40px;
             }
             .hero-text h1 { font-size: 2.8rem; }
             .hero-text p { max-width: 100%; margin: 0 auto 30px auto; }
-            .tools-grid { grid-template-columns: 1fr; }
+            .dos-donts-grid { grid-template-columns: 1fr; }
+            .formula-banner .formula-text { font-size: 1.1rem; }
         }
     </style>
 </head>
 <body>
 
+    <!-- MENÚ DE NAVEGACIÓN -->
+    <nav class="navbar">
+        <a href="#inicio" class="nav-logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
+            GEM Ilustrador
+        </a>
+        <ul class="nav-links">
+            <li><a href="#ejemplos">Ejemplos</a></li>
+            <li><a href="#como-funciona">Cómo Funciona</a></li>
+            <li><a href="#mejores-practicas">Mejores Prácticas</a></li>
+            <li><a href="#colores">Colores (Tokens)</a></li>
+        </ul>
+    </nav>
+
     <div class="container">
         
         <!-- HEADER A 2 COLUMNAS -->
-        <header class="hero">
+        <header id="inicio" class="hero">
             <div class="hero-text">
                 <h1>Crea ilustraciones <span>increíbles</span> al instante</h1>
-                <p>Bienvenido al GEM Ilustrador oficial. Diseña gráficos minimalistas con estilo lineal y manchas de color exactas para todas las marcas de El Puerto de Liverpool. Rápido, preciso y escalable.</p>
+                <p>Herramienta oficial para diseñar gráficos minimalistas con estilo lineal y manchas de color exactas para todas las marcas de El Puerto de Liverpool. Rápido, preciso y escalable.</p>
                 <a href="https://gemini.google.com/gem/1r4HP-glpqIqlXXfjVRghru6OH2y7EtPp?usp=sharing" target="_blank" class="btn btn-primary">Abrir GEM en Gemini</a>
             </div>
             
             <div class="hero-image-container">
-                <!-- La imagen de referencia con animación flotante -->
                 <img src="https://casandra-abreu.github.io/ux/imagegem.jpeg" alt="Ejemplo de ilustración GEM">
             </div>
         </header>
 
-        <!-- SECCIÓN DE PASOS CREATIVOS -->
-        <section class="steps-section">
-            <h2 class="section-title">¿Cómo funciona?</h2>
-            
-            <div class="steps-grid">
-                <!-- Tarjeta 1 -->
-                <div class="step-card">
-                    <div class="step-number">1</div>
-                    <h3>Imagina la Escena</h3>
-                    <p>Define personajes y acciones (ej. un joven en su laptop, recibiendo un paquete). Describe los objetos a su alrededor de forma sencilla.</p>
-                </div>
-                
-                <!-- Tarjeta 2 -->
-                <div class="step-card">
-                    <div class="step-number">2</div>
-                    <h3>Elige tu Marca</h3>
-                    <p>Indica para qué marca es la imagen. El GEM adaptará automáticamente la mancha de color de fondo a los lineamientos visuales correspondientes.</p>
-                </div>
-                
-                <!-- Tarjeta 3 -->
-                <div class="step-card">
-                    <div class="step-number">3</div>
-                    <h3>Agrega Detalles</h3>
-                    <p>Si la composición lo requiere, pide que se incluyan globos de diálogo o de pensamiento en español para darle más vida al gráfico.</p>
-                </div>
-                
-                <!-- Tarjeta 4 -->
-                <div class="step-card">
-                    <div class="step-number">4</div>
-                    <h3>Genera y Ajusta</h3>
-                    <p>Ejecuta tu prompt. Si necesitas un color HEX súper específico o ajustar un detalle, simplemente pídeselo al GEM en la misma conversación.</p>
-                </div>
+        <!-- SECCIÓN DE EJEMPLOS DE PROMPTS (AHORA ES LO PRIMERO) -->
+        <section id="ejemplos">
+            <h2 class="section-title">Ejemplos de Prompts</h2>
+            <div class="ejemplos-grid">
+                <div class="card-panel">
+                    <h3>✍️ Copia y pega estos ejemplos</h3>
+                    <p style="margin-bottom: 25px; color: var(--text-gray);">Úsalos como base, edita los detalles y ponlos directamente en el GEM para generar tus ilustraciones rápidamente.</p>
+                    
+                    <div class="prompt-box">
+                        <span class="prompt-label">Ejemplo Básico</span>
+                        "Crea una ilustración con un joven sonriendo mientras sostiene una bolsa de compras. A su lado hay un carrito de metal. Pon un globo de pensamiento con un símbolo de exclamación. Usa como fondo la mancha de color de la marca Blue Gap."
+                    </div>
 
-                <!-- Tarjeta 5 (NUEVA) -->
-                <div class="step-card special-step">
-                    <div class="step-number">5</div>
-                    <h3>Reutiliza el Chat</h3>
-                    <p>💡 <strong>Tip corporativo:</strong> Como las cuentas de trabajo no permiten borrar el historial de Gemini, te recomendamos generar todas las versiones y nuevas ilustraciones dentro de este mismo chat para mantener limpio tu espacio.</p>
+                    <div class="prompt-box">
+                        <span class="prompt-label">Ejemplo con Color Manual (HEX)</span>
+                        "Dibuja a una mujer joven sentada en el suelo rodeada de cajas de compras vacías. Arriba de ella pon un letrero que diga 'PÁGINA NO ENCONTRADA' en español. Usa exactamente el código HEX #C8E0F0 para la mancha de fondo."
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN DE HERRAMIENTAS (Prompt y Color) -->
-        <section class="tools-grid">
+        <!-- SECCIÓN DE PASOS CREATIVOS -->
+        <section id="como-funciona">
+            <h2 class="section-title">¿Cómo funciona?</h2>
             
-            <div class="card-panel">
-                <h3>✍️ El Prompt Perfecto</h3>
-                <p style="margin-bottom: 20px; color: var(--text-gray);">Copia esta estructura para obtener los mejores resultados a la primera:</p>
-                <div class="prompt-box">
-                    "Crea una ilustración con un joven sonriendo mientras sostiene una bolsa de compras. A su lado hay un carrito de metal. Pon un globo de pensamiento con un símbolo de exclamación. Usa como fondo la mancha de color de la marca Blue Gap."
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Imagina la Escena</h3>
+                    <p>Define personajes y acciones (ej. un joven en su laptop, recibiendo un paquete). Describe los objetos a su alrededor.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Elige tu Marca</h3>
+                    <p>Indica para qué marca es la imagen. El GEM adaptará automáticamente la mancha de color de fondo.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Agrega Detalles</h3>
+                    <p>Si lo requieres, pide que se incluyan globos de diálogo o de pensamiento en español.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>Genera y Ajusta</h3>
+                    <p>Ejecuta tu prompt. Si necesitas ajustar un detalle, simplemente pídeselo al GEM.</p>
+                </div>
+
+                <div class="step-card special-step">
+                    <div class="step-number">5</div>
+                    <h3>Reutiliza el Chat</h3>
+                    <p>💡 <strong>Tip corporativo:</strong> Genera todas las nuevas ilustraciones dentro de un mismo chat para mantener limpio tu historial en la cuenta del trabajo.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- MEJORES PRÁCTICAS -->
+        <section id="mejores-practicas">
+            <h2 class="section-title">Mejores Prácticas</h2>
+            
+            <div class="formula-banner">
+                <h3>🏆 La Fórmula del Prompt Perfecto</h3>
+                <p>Para obtener el mejor resultado a la primera, estructura tu petición así:</p>
+                <div class="formula-text">
+                    Quién/Qué + Acción + Props (Utilería) + Marca/Color
                 </div>
             </div>
 
-            <div class="card-panel">
-                <h3>🎨 Personalización de Color</h3>
-                <p style="margin-bottom: 20px; color: var(--text-gray);">El GEM tiene colores por defecto, pero si necesitas forzar un tono exacto (como el valor 50 o 75 de una marca), busca el código HEX en nuestra paleta oficial interactiva.</p>
+            <div class="dos-donts-grid">
+                <div class="bp-card do-card">
+                    <h3>Claves para el éxito</h3>
+                    <ul class="bp-list do-list">
+                        <li><strong>Sé literal con la acción:</strong> En lugar de "alguien feliz", describe visualmente: <em>"Un hombre sonriendo, sentado tecleando en una laptop"</em>.</li>
+                        <li><strong>Menciona SIEMPRE la marca o color:</strong> Es crítico. Si no lo haces, se usará el rosa por defecto.</li>
+                        <li><strong>Detalla la utilería (Props):</strong> Menciona los objetos específicos (cajas, bolsas de papel, carritos).</li>
+                        <li><strong>Sé exacto con los textos:</strong> Ej: <em>"Agrega un globo de pensamiento que diga '¡Listo!' en español"</em>.</li>
+                    </ul>
+                </div>
+
+                <div class="bp-card dont-card">
+                    <h3>Errores comunes a evitar</h3>
+                    <ul class="bp-list dont-list">
+                        <li><strong>No pidas fondos complejos:</strong> Evita "un centro comercial de fondo". Romperás el estilo minimalista.</li>
+                        <li><strong>No pidas múltiples colores:</strong> <strong>El único color permitido es el de la mancha de fondo</strong>.</li>
+                        <li><strong>Cuidado con los estilos:</strong> El GEM ya hace estilo cómic/lineal. No agregues palabras como <em>"3D, fotorrealista, sombras"</em>.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="iteracion-card">
+                <h3>🔄 El Arte de Iterar (Refinar)</h3>
+                <p style="color: var(--text-gray);">Si el GEM te entrega una imagen casi correcta, <strong>no escribas todo el prompt de nuevo</strong>. Usa micro-ajustes:</p>
+                <ul>
+                    <li><em>"Me encanta, pero mantén exactamente la misma escena y solo ponle lentes al personaje."</em></li>
+                    <li><em>"Haz la misma imagen, pero cambia el color de fondo al código HEX #E5F9FF."</em></li>
+                    <li><em>"Todo está perfecto, pero quita la caja que está en el piso."</em></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- COLORES (TOKENS) -->
+        <section id="colores">
+            <div class="card-panel" style="text-align: center;">
+                <h2 class="section-title" style="margin-bottom: 20px;">🎨 Paleta de Tokens (Color Exacto)</h2>
+                <p style="color: var(--text-gray); font-size: 1.1rem; max-width: 800px; margin: 0 auto;">Si necesitas forzar un tono exacto (como el valor 50 o 75 de una marca específica), busca el código HEX en nuestra paleta oficial interactiva.</p>
                 
                 <a href="https://codepen.io/Sa-l-Ulises-Hern-ndez-Cruz/pen/JoPrELM" target="_blank" class="codepen-link">Explorar Tokens en CodePen →</a>
                 
-                <p style="margin-top: 15px; font-size: 0.9rem; color: var(--text-gray);">
+                <p style="margin-top: 25px; font-size: 1rem; color: var(--text-gray);">
                     <strong>Tip:</strong> Dile al GEM: <em>"Usa exactamente el código HEX #XXXXXX para la mancha de fondo".</em>
                 </p>
             </div>
-
         </section>
 
     </div>
