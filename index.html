@@ -102,8 +102,8 @@
             <div class="flex items-center gap-2 sm:gap-3">
                 <span id="cardCounterBadge" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-pink-50 border border-pink-200 text-[#e10098]">
                     <i class="fa-solid fa-layer-group"></i>
-                    <!-- Contador actualizado -->
-                    <span id="activeCount">3 Activos</span>
+                    <!-- Contador actualizado a 5 -->
+                    <span id="activeCount">5 Activos</span>
                 </span>
             </div>
         </div>
@@ -191,7 +191,7 @@
         import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, doc, setDoc, getDocs, collection, onSnapshot, writeBatch } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Tarjetas base (se eliminó la tarjeta de "Correos de contrato")
+        // Tarjetas base actualizadas
         const initialCards = [
             {
                 id: 'card-1',
@@ -216,6 +216,17 @@
                 createdAt: 2000
             },
             {
+                id: 'card-3',
+                title: 'Correos de contrato',
+                description: 'Plantillas de correo para los 3 pasos del proceso de contratación: estimación, confirmación, solicitud de pago.',
+                link: 'contratos.html',
+                category: 'Talento',
+                icon: 'fa-file-signature',
+                iconBg: 'bg-blue-50 text-blue-600',
+                badgeColor: 'bg-blue-50 text-blue-700 border-blue-200',
+                createdAt: 3000
+            },
+            {
                 id: 'card-4',
                 title: 'Hackathon26',
                 description: 'Soluciones del Hackathon IT: descubriendo nuevas fronteras para el diseño de experiencias, interfaces adaptativas y flujos impulsados por IA.',
@@ -225,6 +236,17 @@
                 iconBg: 'bg-amber-50 text-amber-500',
                 badgeColor: 'bg-amber-50 text-amber-600 border-amber-200',
                 createdAt: 4000
+            },
+            {
+                id: 'card-5',
+                title: 'Ilustraciones El Puerto de Liverpool',
+                description: 'Crea imágenes a partir de IA con el mismo estilo y con los colores de cada marca.',
+                link: 'gem_ilustrator.html',
+                category: 'Herramienta',
+                icon: 'fa-palette',
+                iconBg: 'bg-indigo-50 text-indigo-500',
+                badgeColor: 'bg-indigo-50 text-indigo-600 border-indigo-200',
+                createdAt: 5000
             }
         ];
 
