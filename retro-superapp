@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retrospectiva: Sobreviviendo a la Horda</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Poppins', 'sans-serif'] },
+                    colors: {
+                        brand: {
+                            50: '#fdf0f7',
+                            100: '#fbe1f0',
+                            500: '#DB0080', /* Rosa Liverpool */
+                            600: '#b90069',
+                            900: '#65033a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; overflow-x: hidden; }
+        .theme-bg-zombie { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); }
+        .zombie-accent { color: #16a34a; }
+        .liverpool-pink { color: #DB0080; }
+        .bg-liverpool-pink { background-color: #DB0080; }
+        .border-liverpool-pink { border-color: #DB0080; }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #DB0080; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b90069; }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+            width: 100%;
+        }
+    </style>
+    <!-- Incluir Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+
+    <!-- Header Liverpool -->
+    <header class="bg-brand-900 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="bg-white p-1 rounded shadow-sm flex items-center justify-center">
+                   <span class="text-brand-900 font-bold text-xl leading-none block px-2">L</span>
+                </div>
+                <h1 class="text-lg font-bold">Retrospectiva Estratégica UX & Dev</h1>
+            </div>
+            <div class="text-sm font-medium px-4 py-1.5 bg-white/10 rounded-full border border-white/20 shadow-inner flex items-center gap-2">
+                <span class="text-lg">🧟‍♂️</span> Operación: Refugio Seguro
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow flex flex-col theme-bg-zombie">
+        
+        <!-- Sección 1: Bienvenida y Contexto -->
+        <section class="w-full py-20 px-6 flex flex-col justify-center items-center text-center min-h-[80vh] border-b border-green-200">
+            <div class="max-w-4xl">
+                <div class="flex justify-center gap-4 mb-6 text-6xl">
+                    <span class="animate-pulse">🧟‍♂️</span>
+                    <span>🚧</span>
+                    <span class="animate-bounce">🏃‍♂️</span>
+                </div>
+                <h2 class="text-4xl md:text-6xl font-extrabold text-gray-900 mb-6 tracking-tight">Sobreviviendo a la Horda</h2>
+                <h3 class="text-2xl text-brand-600 font-bold mb-6">Sinergia entre Exploradores (UX) y Defensores (Dev IA)</h3>
+                
+                <p class="text-xl text-gray-700 mb-10 font-light max-w-3xl mx-auto">
+                    El refugio está bajo asedio constante. Las hordas de <strong>"Deuda Técnica"</strong> y <strong>"Deuda de Experiencia"</strong> amenazan nuestros muros. Si construimos rápido pero a ciegas, la horda entrará.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6 text-left">
+                    <div class="bg-white/90 p-6 rounded-2xl border-l-4 border-l-brand-500 shadow-lg">
+                        <h4 class="font-bold text-lg mb-2 flex items-center gap-2">
+                            <span>🗺️</span> UX: Los Exploradores
+                        </h4>
+                        <p class="text-sm text-gray-600">Mapean el terreno, entienden el comportamiento de la horda (usuarios reales) e indican dónde es seguro construir para evitar el colapso (retrabajo).</p>
+                    </div>
+                    <div class="bg-white/90 p-6 rounded-2xl border-l-4 border-l-green-600 shadow-lg">
+                        <h4 class="font-bold text-lg mb-2 flex items-center gap-2">
+                            <span>⚙️</span> Dev IA: La Defensa Pesada
+                        </h4>
+                        <p class="text-sm text-gray-600">Usan IA como maquinaria pesada para levantar muros a súper velocidad. Pero <em>necesitan coordenadas precisas</em> para no desperdiciar recursos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 2: Rompehielos -->
+        <section class="w-full py-20 px-6 flex flex-col justify-center items-center border-b border-green-200 bg-white">
+            <div class="max-w-4xl w-full">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-green-100 text-green-800 text-sm font-bold mb-6 border border-green-200">
+                    <span>🧊</span> Desinfección Inicial (Rompehielos)
+                </div>
+                
+                <div class="bg-gray-50 p-8 md:p-10 rounded-2xl shadow-md border border-gray-200 text-center">
+                    <h3 class="text-xl font-bold text-gray-800 mb-6">Preparando el Kit de Supervivencia</h3>
+                    <p class="text-2xl md:text-3xl text-brand-600 font-medium italic mb-8">
+                        "Comienza la invasión zombie en la oficina. Solo tienes 1 minuto. Tienes que elegir a un compañero de este equipo para huir y un objeto que tengas en tu escritorio en este momento."
+                    </p>
+                    <p class="text-lg font-bold text-gray-700">¿A quién eliges y qué objeto se llevan?</p>
+                    <div class="mt-6 text-sm text-gray-500 italic">
+                        (Objetivo: Bajar las defensas, reír un poco y recordar que nuestra supervivencia depende de colaborar, no de competir entre nosotros).
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 3: Datos Duros - La importancia del Mapa (UX) -->
+        <section class="w-full py-20 px-6 flex flex-col justify-center items-center border-b border-green-200">
+            <div class="max-w-5xl w-full">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-100 text-brand-800 text-sm font-bold mb-6 border border-brand-200">
+                    <span>📊</span> Inteligencia de Combate (Datos Duros)
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">¿Por qué no podemos simplemente construir rápido?</h2>
+                <p class="text-lg text-gray-600 mb-10">La IA acelera la construcción de la barricada, pero <strong>sin el mapa de UX, estamos acelerando el desperdicio</strong>.</p>
+                
+                <div class="grid md:grid-cols-2 gap-10 items-center mb-12">
+                    <!-- Gráfica 1-10-100 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
+                        <h3 class="font-bold text-lg text-gray-800 mb-2">El Costo de una Mordida (Regla 1-10-100)</h3>
+                        <p class="text-sm text-gray-500 mb-4">Corregir el rumbo cuando ya estamos construyendo (código) nos cuesta energía vital.</p>
+                        <div class="chart-container">
+                            <canvas id="costoMordidaChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Gráfica 5 Usuarios -->
+                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
+                        <h3 class="font-bold text-lg text-gray-800 mb-2">Escaneo Rápido de Infección</h3>
+                        <p class="text-sm text-gray-500 mb-4">No necesitamos meses de estudio. Probar con 5 humanos detecta el 85% de las trampas mortales antes de programar.</p>
+                        <div class="chart-container">
+                            <canvas id="escaneoUsuariosChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabla Comparativa IA vs UX -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border-l-4 border-brand-500">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">El Arsenal: IA vs. UX (Operaciones UX)</h3>
+                    <p class="text-sm text-gray-600 mb-6">Si delegamos todo a la automatización de la IA y eliminamos la exploración humana, el refugio caerá desde adentro.</p>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm border-collapse">
+                            <thead>
+                                <tr class="bg-gray-100 text-gray-700">
+                                    <th class="p-3 border-b font-bold rounded-tl-lg">Fase Operativa</th>
+                                    <th class="p-3 border-b font-bold text-green-700">Velocidad (Lo que hace la IA)</th>
+                                    <th class="p-3 border-b font-bold text-brand-600 rounded-tr-lg">Protección (Lo que perdemos sin UX)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <tr>
+                                    <td class="p-3 font-semibold text-gray-800">Discovery & Estrategia</td>
+                                    <td class="p-3 bg-green-50">Sintetiza requerimientos y genera código/wireframes en segundos.</td>
+                                    <td class="p-3 bg-brand-50">El <strong>contexto real</strong>. Construimos rápido la solución para el <em>problema equivocado</em>.</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold text-gray-800">Validación (Testing)</td>
+                                    <td class="p-3 bg-green-50">Simula pruebas sintéticas o análisis predictivos sin contexto.</td>
+                                    <td class="p-3 bg-brand-50"><strong>Contacto humano directo</strong>. Comportamientos inesperados que destruyen la adopción.</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold text-gray-800">Diseño Visual & Flujos</td>
+                                    <td class="p-3 bg-green-50">Genera pantallas base respetando patrones visuales superficiales.</td>
+                                    <td class="p-3 bg-brand-50">Juicio sobre modelos mentales, excepciones y <strong>estados de error reales</strong>.</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold text-gray-800">Responsabilidad</td>
+                                    <td class="p-3 bg-green-50">Genera un output basado en probabilidades matemáticas.</td>
+                                    <td class="p-3 bg-brand-50"><strong>Asumir responsabilidad organizacional, ética y comercial</strong> por la experiencia final.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 4: Dinámica Central (Las 3 Fases) -->
+        <section class="w-full py-20 px-6 flex flex-col justify-center items-center bg-gray-900 text-white border-b border-gray-700">
+            <div class="max-w-5xl w-full">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gray-800 text-brand-400 text-sm font-bold mb-6 border border-gray-700">
+                    <span>⚙️</span> Plan de Supervivencia (Dinámica Interactiva)
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-10">Misión: Sellar las Brechas</h2>
+                
+                <div class="space-y-8">
+                    <!-- Fase 1: Dolores -->
+                    <div class="bg-gray-800 p-8 rounded-2xl shadow-xl border-l-8 border-red-500 relative transform transition hover:scale-[1.02]">
+                        <div class="absolute -left-5 top-8 w-10 h-10 rounded-full bg-red-500 text-white flex items-center justify-center font-bold text-lg shadow-lg">1</div>
+                        <h3 class="font-bold text-2xl text-white mb-3 ml-6 flex items-center gap-2">
+                            <span>🚨</span> Fase 1: ¿Por dónde entran los zombies? (Dolores Actuales)
+                        </h3>
+                        <div class="ml-6">
+                            <p class="text-gray-300 mb-4">Debemos identificar honestamente las fricciones actuales en nuestro proceso. ¿Qué "mordidas" estamos sufriendo?</p>
+                            <div class="bg-gray-900 p-5 rounded-xl border border-gray-700">
+                                <strong class="block mb-2 text-red-400 uppercase tracking-wide text-xs">Acción de la sesión (15 min):</strong> 
+                                <ul class="list-disc list-inside text-sm text-gray-400 space-y-2">
+                                    <li>Lluvia de ideas en Post-its (Miro/Figma).</li>
+                                    <li><em>Ejemplos: "Dev no respeta los flujos validados y cambia cosas por rapidez", "UX entrega pantallas tarde sin considerar la latencia de la IA", "Se pide construir funcionalidades sin saber si el usuario las quiere".</em></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fase 2: Backlog -->
+                    <div class="bg-gray-800 p-8 rounded-2xl shadow-xl border-l-8 border-yellow-500 relative transform transition hover:scale-[1.02]">
+                        <div class="absolute -left-5 top-8 w-10 h-10 rounded-full bg-yellow-500 text-gray-900 flex items-center justify-center font-bold text-lg shadow-lg">2</div>
+                        <h3 class="font-bold text-2xl text-white mb-3 ml-6 flex items-center gap-2">
+                            <span>📋</span> Fase 2: Análisis de Zona Segura (Priorización del Backlog)
+                        </h3>
+                        <div class="ml-6">
+                            <p class="text-gray-300 mb-4">No podemos salir a explorar todo a la vez. Necesitamos decidir qué misiones requieren el "Mapa de UX" urgentemente y cuáles pueden avanzar rápido.</p>
+                            <div class="bg-gray-900 p-5 rounded-xl border border-gray-700">
+                                <strong class="block mb-2 text-yellow-400 uppercase tracking-wide text-xs">Acción de la sesión (20 min):</strong> 
+                                <ul class="list-disc list-inside text-sm text-gray-400 space-y-2">
+                                    <li>Proyectar los próximos tickets del Backlog.</li>
+                                    <li>Clasificar usando Dual-Track Agile: ¿Qué iniciativas de IA requieren Discovery/Research de UX <em>1 Sprint antes</em> para no construir a ciegas?</li>
+                                    <li>Clasificar el riesgo (Matriz): Alto impacto vs Baja Reversibilidad.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fase 3: Acuerdos -->
+                    <div class="bg-gray-800 p-8 rounded-2xl shadow-xl border-l-8 border-green-500 relative transform transition hover:scale-[1.02]">
+                        <div class="absolute -left-5 top-8 w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center font-bold text-lg shadow-lg">3</div>
+                        <h3 class="font-bold text-2xl text-white mb-3 ml-6 flex items-center gap-2">
+                            <span>🤝</span> Fase 3: Pacto de Supervivencia (Acuerdos y Plan)
+                        </h3>
+                        <div class="ml-6">
+                            <p class="text-gray-300 mb-4">Transformamos los dolores identificados en la Fase 1 en <strong>reglas inquebrantables</strong> para nuestro refugio.</p>
+                            <div class="bg-gray-900 p-5 rounded-xl border border-gray-700">
+                                <strong class="block mb-2 text-green-400 uppercase tracking-wide text-xs">Acción de la sesión (20 min):</strong> 
+                                <ul class="list-disc list-inside text-sm text-gray-400 space-y-2">
+                                    <li>Redactar conjuntamente los nuevos 'Working Agreements'.</li>
+                                    <li>Integrar estos controles al <em>Definition of Done (DoD)</em> de las iniciativas.</li>
+                                    <li>Compromiso mutuo: Velocidad de IA + Validación Humana de UX.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 5: Acuerdos Finales -->
+        <section class="w-full py-20 px-6 flex flex-col justify-center items-center bg-white border-b border-green-200">
+            <div class="max-w-4xl w-full">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-100 text-brand-800 text-sm font-bold mb-6 border border-brand-200">
+                    <span>📜</span> El Contrato Social
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Las Reglas de Zombieland</h2>
+                <p class="text-lg text-gray-600 mb-10">Construyamos nuestros acuerdos clave extraídos de las Operaciones UX y el enfoque HCAI para agregar al DoD. Edita, elimina o agrega nuevas reglas.</p>
+                
+                <div class="bg-gray-50 p-8 md:p-10 rounded-2xl shadow-xl border border-gray-200" id="acuerdos-box">
+                    
+                    <div id="acuerdos-list" class="space-y-4 mb-8">
+                        <!-- Regla 1 -->
+                        <div class="acuerdo-item flex items-start gap-4 p-4 bg-white rounded-lg border border-gray-200 shadow-sm relative group">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center font-bold text-lg mt-1 numeral">1</div>
+                            <div class="flex-grow w-full">
+                                <input type="text" class="acuerdo-titulo font-bold text-gray-900 block text-lg w-full bg-transparent border-b border-transparent hover:border-gray-300 focus:border-brand-500 focus:outline-none focus:bg-white transition-colors mb-1" value="No salir sin el Mapa (Problema Definido):">
+                                <textarea class="acuerdo-desc text-gray-700 w-full bg-transparent border border-transparent hover:border-gray-300 focus:border-brand-500 focus:outline-none focus:bg-white rounded p-1 resize-y min-h-[60px] transition-colors text-sm">Ninguna iniciativa técnica de IA inicia desarrollo sin un problema y objetivo de negocio validado por UX. No construimos solo "por usar IA".</textarea>
+                            </div>
+                            <button onclick="eliminarAcuerdo(this)" class="absolute top-2 right-2 text-gray-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity" title="Eliminar regla">
+                                ✖
+                            </button>
+                        </div>
+                        
+                        <!-- Regla 2 -->
+                        <div class="acuerdo-item flex items-start gap-4 p-4 bg-white rounded-lg border border-gray-200 shadow-sm relative group">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center font-bold text-lg mt-1 numeral">2</div>
+                            <div class="flex-grow w-full">
+                                <input type="text" class="acuerdo-titulo font-bold text-gray-900 block text-lg w-full bg-transparent border-b border-transparent hover:border-gray-300 focus:border-brand-500 focus:outline-none focus:bg-white transition-colors mb-1" value="Regla de los 5 Exploradores (Validación):">
+                                <textarea class="acuerdo-desc text-gray-700 w-full bg-transparent border border-transparent hover:border-gray-300 focus:border-brand-500 focus:outline-none focus:bg-white rounded p-1 resize-y min-h-[60px] transition-colors text-sm">Los desacuerdos de usabilidad entre Dev y Diseño no se debaten; se prueban con al menos 5 usuarios reales antes de programar para detectar el 85% de fallas.</textarea>
+                            </div>
+                            <button onclick="eliminarAcuerdo(this)" class="absolute top-2 right-2 text-gray-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity" title="Eliminar regla">
+                                ✖
+                            </button>
+                        </div>
+
+                        <!-- Regla 3 -->
+                        <div class="acuerdo-item flex items-start gap-4 p-4 bg-white rounded-lg border border-gray-200 shadow-sm relative group">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center font-bold text-lg mt-1 numeral">3</div>
+                            <div class="flex-grow w-full">
+                                <input type="text" class="acuerdo-titulo font-bold text-gray-900 block text-lg w-full bg-transparent border-b border-transparent hover:border-gray-300 focus:border-brand-500 focus:outline-none focus:bg-white transition-colors mb-1" value="Avisar de Mordidas (Latencia):">
+                                <textarea class="acuerdo-desc text-gray-700 w-full bg-transparent border border-transparent hover:border-gray-300 focus:border-brand-500 focus:outline-none focus:bg-white rounded p-1 resize-y min-h-[60px] transition-colors text-sm">Desarrollo comunicará tempranamente restricciones técnicas (ej. tiempos de respuesta del modelo) para que UX diseñe fricción estratégica (pantallas de carga/explicación) que genere confianza.</textarea>
+                            </div>
+                            <button onclick="eliminarAcuerdo(this)" class="absolute top-2 right-2 text-gray-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity" title="Eliminar regla">
+                                ✖
+                            </button>
+                        </div>
+
+                        <!-- Regla 4 -->
+                        <div class="acuerdo-item flex items-start gap-4 p-4 bg-white rounded-lg border border-gray-200 shadow-sm relative group">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center font-bold text-lg mt-1 numeral">4</div>
+                            <div class="flex-grow w-full">
+                                <input type="text" class="acuerdo-titulo font-bold text-gray-900 block text-lg w-full bg-transparent border-b border-transparent hover:border-gray-300 focus:border-brand-500 focus:outline-none focus:bg-white transition-colors mb-1" value="Dual-Track Activo:">
+                                <textarea class="acuerdo-desc text-gray-700 w-full bg-transparent border border-transparent hover:border-gray-300 focus:border-brand-500 focus:outline-none focus:bg-white rounded p-1 resize-y min-h-[60px] transition-colors text-sm">UX investiga y diseña flujos completos (incluyendo errores y estados vacíos) al menos 1 Sprint por delante del equipo de Desarrollo.</textarea>
+                            </div>
+                            <button onclick="eliminarAcuerdo(this)" class="absolute top-2 right-2 text-gray-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity" title="Eliminar regla">
+                                ✖
+                            </button>
+                        </div>
+                        
+                        <!-- Regla 5 (Nueva) -->
+                        <div class="acuerdo-item flex items-start gap-4 p-4 bg-white rounded-lg border border-gray-200 shadow-sm relative group">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center font-bold text-lg mt-1 numeral">5</div>
+                            <div class="flex-grow w-full">
+                                <input type="text" class="acuerdo-titulo font-bold text-gray-900 block text-lg w-full bg-transparent border-b border-transparent hover:border-gray-300 focus:border-brand-500 focus:outline-none focus:bg-white transition-colors mb-1" value="Presencia Obligatoria en Contacto con Usuario:">
+                                <textarea class="acuerdo-desc text-gray-700 w-full bg-transparent border border-transparent hover:border-gray-300 focus:border-brand-500 focus:outline-none focus:bg-white rounded p-1 resize-y min-h-[60px] transition-colors text-sm">Cualquier interacción, investigación o sesión que involucre "tocar base" con el usuario final debe contar forzosamente con la participación y guía del equipo de UX.</textarea>
+                            </div>
+                            <button onclick="eliminarAcuerdo(this)" class="absolute top-2 right-2 text-gray-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity" title="Eliminar regla">
+                                ✖
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Botón Agregar -->
+                    <div class="mb-10 flex justify-center">
+                        <button onclick="agregarAcuerdo()" class="flex items-center gap-2 px-4 py-2 bg-green-100 hover:bg-green-200 text-green-800 font-semibold rounded-lg transition-colors text-sm border border-green-200 border-dashed">
+                            <span>➕</span> Añadir Nueva Regla
+                        </button>
+                    </div>
+
+                    <div class="pt-6 border-t border-gray-200 text-center">
+                        <button onclick="copiarAcuerdos()" class="px-8 py-3 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-lg transition-colors text-sm shadow-lg flex items-center gap-2 mx-auto">
+                            <span>📋</span> Copiar Acuerdos (Formato Jira/Mail)
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Scripts para Gráficas y Copiado -->
+    <script>
+        // Inicializar Gráficas cuando el DOM cargue
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            // 1. Gráfica de Costo (1-10-100)
+            const ctxCost = document.getElementById('costoMordidaChart').getContext('2d');
+            new Chart(ctxCost, {
+                type: 'bar',
+                data: {
+                    labels: ['Fase Diseño (UX)', 'Fase Código (Dev)', 'Producción (Live)'],
+                    datasets: [{
+                        label: 'Costo de Refactorización',
+                        data: [1, 10, 100],
+                        backgroundColor: ['#16a34a', '#eab308', '#DB0080'], // Verde, Amarillo, Rosa Liverpool
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { 
+                            type: 'logarithmic',
+                            title: { display: true, text: 'Costo (Multiplicador)' }
+                        }
+                    }
+                }
+            });
+
+            // 2. Gráfica de 5 Usuarios (Curva NNG)
+            const ctxUser = document.getElementById('escaneoUsuariosChart').getContext('2d');
+            new Chart(ctxUser, {
+                type: 'line',
+                data: {
+                    labels: ['0', '1', '2', '3', '4', '5', '8', '10'],
+                    datasets: [{
+                        label: '% Errores Detectados',
+                        data: [0, 33, 50, 66, 75, 85, 95, 100],
+                        borderColor: '#DB0080',
+                        backgroundColor: 'rgba(219, 0, 128, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        pointBackgroundColor: '#16a34a',
+                        pointRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { 
+                            max: 100,
+                            title: { display: true, text: '% de Usabilidad Resuelta' }
+                        },
+                        x: {
+                            title: { display: true, text: 'Cantidad de Usuarios de Prueba' }
+                        }
+                    }
+                }
+            });
+        });
+
+        // Función para actualizar numeración de acuerdos
+        function actualizarNumeracion() {
+            const numerales = document.querySelectorAll('.acuerdo-item .numeral');
+            numerales.forEach((el, index) => {
+                el.innerText = index + 1;
+            });
+        }
+
+        // Función para eliminar un acuerdo
+        function eliminarAcuerdo(btn) {
+            const item = btn.closest('.acuerdo-item');
+            if (document.querySelectorAll('.acuerdo-item').length > 1) {
+                item.remove();
+                actualizarNumeracion();
+            } else {
+                alert("Debe quedar al menos una regla de supervivencia.");
+            }
+        }
+
+        // Función para agregar un nuevo acuerdo
+        function agregarAcuerdo() {
+            const list = document.getElementById('acuerdos-list');
+            const nuevoItem = document.createElement('div');
+            nuevoItem.className = 'acuerdo-item flex items-start gap-4 p-4 bg-white rounded-lg border border-gray-200 shadow-sm relative group';
+            nuevoItem.innerHTML = `
+                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center font-bold text-lg mt-1 numeral"></div>
+                <div class="flex-grow w-full">
+                    <input type="text" class="acuerdo-titulo font-bold text-gray-900 block text-lg w-full bg-transparent border-b border-gray-300 focus:border-brand-500 focus:outline-none focus:bg-white transition-colors mb-1" placeholder="Título de la nueva regla" value="Nueva Regla:">
+                    <textarea class="acuerdo-desc text-gray-700 w-full bg-transparent border border-gray-300 focus:border-brand-500 focus:outline-none focus:bg-white rounded p-1 resize-y min-h-[60px] transition-colors text-sm" placeholder="Describe el acuerdo de trabajo..."></textarea>
+                </div>
+                <button onclick="eliminarAcuerdo(this)" class="absolute top-2 right-2 text-gray-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity" title="Eliminar regla">
+                    ✖
+                </button>
+            `;
+            list.appendChild(nuevoItem);
+            actualizarNumeracion();
+            
+            // Focus on the new title input
+            nuevoItem.querySelector('.acuerdo-titulo').focus();
+        }
+
+        // Función para copiar acuerdos en Rich Text
+        function copiarAcuerdos() {
+            const acuerdosItems = document.querySelectorAll('.acuerdo-item');
+            let richText = `
+                <div style="font-family: 'Segoe UI', Arial, sans-serif; color: #333; padding: 20px; border-left: 5px solid #DB0080; background-color: #fdf0f7; border-radius: 0 8px 8px 0;">
+                    <h3 style="color: #DB0080; margin-top: 0; font-size: 18px;">🧟‍♂️ Reglas de Supervivencia: Acuerdos UX & Dev</h3>
+                    <ul style="padding-left: 20px; line-height: 1.6;">
+            `;
+            
+            acuerdosItems.forEach(item => {
+                const title = item.querySelector('.acuerdo-titulo').value.trim() || 'Regla sin título';
+                const desc = item.querySelector('.acuerdo-desc').value.trim() || 'Sin descripción';
+                richText += `<li style="margin-bottom: 12px;"><strong>${title}</strong> ${desc}</li>`;
+            });
+            richText += '</ul></div>';
+
+            const tempDiv = document.createElement("div");
+            tempDiv.innerHTML = richText;
+            tempDiv.style.position = "absolute";
+            tempDiv.style.left = "-9999px";
+            document.body.appendChild(tempDiv);
+
+            const range = document.createRange();
+            range.selectNodeContents(tempDiv);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+
+            try {
+                document.execCommand('copy');
+                alert("¡Reglas copiadas! Pégalas en Jira o en tu correo (mantendrán el formato y el contenido que editaste).");
+            } catch (err) {
+                alert("Error al copiar los acuerdos.");
+            }
+            document.body.removeChild(tempDiv);
+            selection.removeAllRanges();
+        }
+    </script>
+</body>
+</html>
