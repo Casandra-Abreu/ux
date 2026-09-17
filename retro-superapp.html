@@ -453,21 +453,65 @@
             nuevoItem.querySelector('.acuerdo-titulo').focus();
         }
 
-        // Función para copiar acuerdos en Rich Text
+        // Función para copiar acuerdos en Rich Text con diseño Zombie
         function copiarAcuerdos() {
             const acuerdosItems = document.querySelectorAll('.acuerdo-item');
+            
+            // Construir el HTML enriquecido con temática Zombie
             let richText = `
-                <div style="font-family: 'Segoe UI', Arial, sans-serif; color: #333; padding: 20px; border-left: 5px solid #DB0080; background-color: #fdf0f7; border-radius: 0 8px 8px 0;">
-                    <h3 style="color: #DB0080; margin-top: 0; font-size: 18px;">🧟‍♂️ Reglas de Supervivencia: Acuerdos UX & Dev</h3>
-                    <ul style="padding-left: 20px; line-height: 1.6;">
+                <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 650px; border: 2px solid #166534; border-radius: 12px; overflow: hidden; background-color: #f0fdf4; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                    <!-- Header -->
+                    <div style="background-color: #14532d; padding: 20px; text-align: center; border-bottom: 4px solid #16a34a;">
+                        <h2 style="color: #ffffff; margin: 0; font-size: 24px; text-transform: uppercase; letter-spacing: 1px;">
+                            <span style="font-size: 28px; vertical-align: middle;">🧟‍♂️</span> 
+                            El Contrato de Supervivencia
+                            <span style="font-size: 28px; vertical-align: middle;">🚧</span>
+                        </h2>
+                        <p style="color: #86efac; margin: 8px 0 0 0; font-size: 14px; font-style: italic;">
+                            Reglas Oficiales de Zombieland (Acuerdos UX & Dev)
+                        </p>
+                    </div>
+                    
+                    <!-- Content -->
+                    <div style="padding: 24px;">
+                        <p style="color: #166534; font-size: 15px; margin-top: 0; font-weight: bold;">
+                            Para mantener el refugio a salvo de la Deuda Técnica y la Deuda de Experiencia, el equipo se compromete a cumplir las siguientes reglas:
+                        </p>
+                        
+                        <ul style="list-style: none; padding: 0; margin: 0;">
             `;
             
-            acuerdosItems.forEach(item => {
+            acuerdosItems.forEach((item, index) => {
                 const title = item.querySelector('.acuerdo-titulo').value.trim() || 'Regla sin título';
                 const desc = item.querySelector('.acuerdo-desc').value.trim() || 'Sin descripción';
-                richText += `<li style="margin-bottom: 12px;"><strong>${title}</strong> ${desc}</li>`;
+                
+                richText += `
+                            <li style="margin-bottom: 20px; background-color: #ffffff; border-left: 5px solid #DB0080; padding: 16px; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                                <div style="display: flex; align-items: flex-start;">
+                                    <div style="background-color: #16a34a; color: white; border-radius: 50%; width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px; margin-right: 12px; flex-shrink: 0; text-align: center; line-height: 28px;">
+                                        ${index + 1}
+                                    </div>
+                                    <div>
+                                        <h3 style="color: #111827; margin: 0 0 6px 0; font-size: 16px;">${title}</h3>
+                                        <p style="color: #4b5563; margin: 0; font-size: 14px; line-height: 1.5;">${desc}</p>
+                                    </div>
+                                </div>
+                            </li>
+                `;
             });
-            richText += '</ul></div>';
+            
+            richText += `
+                        </ul>
+                    </div>
+                    
+                    <!-- Footer -->
+                    <div style="background-color: #dcfce7; padding: 12px; text-align: center; border-top: 1px solid #bbf7d0;">
+                        <p style="color: #166534; font-size: 12px; margin: 0; font-weight: bold;">
+                            ⚔️ Sinergia de Exploradores y Defensores ⚔️
+                        </p>
+                    </div>
+                </div>
+            `;
 
             const tempDiv = document.createElement("div");
             tempDiv.innerHTML = richText;
@@ -483,7 +527,7 @@
 
             try {
                 document.execCommand('copy');
-                alert("¡Reglas copiadas! Pégalas en Jira o en tu correo (mantendrán el formato y el contenido que editaste).");
+                alert("¡Reglas copiadas! Pégalas en Jira o en tu correo. El formato con temática Zombie se mantendrá.");
             } catch (err) {
                 alert("Error al copiar los acuerdos.");
             }
