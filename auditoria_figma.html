@@ -254,9 +254,165 @@
                 </div>
 
                 <div class="pt-4 mt-6 border-t border-slate-100 flex flex-wrap items-center justify-between text-xs text-slate-500 gap-2">
-                    <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Aprobado (≥85)</span>
-                    <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Observaciones Menores (75-84)</span>
-                    <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span> Retrabajo Requerido (&lt;75)</span>
+                    <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Aprobado (≥85 pts)</span>
+                    <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Observaciones Menores (70-84 pts)</span>
+                    <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span> Retrabajo Requerido (&lt;70 pts)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: ¿QUÉ SIGNIFICA LA PUNTUACIÓN? (ESCALA 1 AL 5 & SCORE GLOBAL) -->
+        <section class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between border-b border-slate-100 pb-4 gap-2">
+                <div>
+                    <span class="text-xs font-extrabold uppercase font-mono tracking-widest text-brandPink block mb-1">Rúbrica Oficial de Calificación</span>
+                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900 font-display">¿Qué significa cada puntuación y cómo se interpreta?</h2>
+                </div>
+                <span class="text-xs text-slate-600 font-medium bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-lg shrink-0">
+                    <i class="fa-solid fa-scale-balanced text-brandPurple mr-1"></i> Corte de aprobación para Handoff: <strong>≥ 85 pts</strong>
+                </span>
+            </div>
+
+            <!-- Explicación del Score Global -->
+            <div class="space-y-3">
+                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-2">
+                    <i class="fa-solid fa-trophy text-brandPurple"></i>
+                    <span>1. Dictamen según la Calificación Final (Escala 0 a 100 Puntos)</span>
+                </h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    La calificación final es la suma ponderada de los 5 rubros evaluados. Determina si el entregable pasa directamente a desarrollo Front-End (TI Ventas / Retail) o si requiere correcciones previas:
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-1">
+                    <!-- Aprobado -->
+                    <div class="p-4 rounded-xl border border-emerald-200 bg-emerald-50/40 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-100 text-emerald-800 font-display">
+                                <i class="fa-solid fa-circle-check text-emerald-600"></i> 85 a 100 pts
+                            </span>
+                            <span class="text-[10px] font-mono font-bold text-emerald-700 uppercase">Certificado</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-slate-900 font-display">Aprobado • Listo para Dev</h4>
+                        <p class="text-[11.5px] text-slate-600 leading-snug">
+                            Cumplimiento sobresaliente de los lineamientos GLUE. Higiene impecable, 100% tokens asociados, componentes con variantes completas y especificaciones claras para desarrollo sin bloqueos.
+                        </p>
+                    </div>
+
+                    <!-- Observaciones -->
+                    <div class="p-4 rounded-xl border border-amber-200 bg-amber-50/40 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-100 text-amber-800 font-display">
+                                <i class="fa-solid fa-triangle-exclamation text-amber-600"></i> 70 a 84 pts
+                            </span>
+                            <span class="text-[10px] font-mono font-bold text-amber-700 uppercase">Condicional</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-slate-900 font-display">Aprobado con Observaciones</h4>
+                        <p class="text-[11.5px] text-slate-600 leading-snug">
+                            El diseño es viable y no detiene el sprint de desarrollo, pero presenta deuda técnica tolerable (ajustes en nomenclatura, paddings o estados hover secundarios) que debe solventarse antes del cierre.
+                        </p>
+                    </div>
+
+                    <!-- Retrabajo -->
+                    <div class="p-4 rounded-xl border border-rose-200 bg-rose-50/40 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-rose-100 text-rose-800 font-display">
+                                <i class="fa-solid fa-ban text-rose-600"></i> Menor a 70 pts
+                            </span>
+                            <span class="text-[10px] font-mono font-bold text-rose-700 uppercase">No Apto</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-slate-900 font-display">Alerta • Retrabajo Requerido</h4>
+                        <p class="text-[11.5px] text-slate-600 leading-snug">
+                            Deuda técnica crítica. Se detectaron componentes desvinculados (detached), colores #HEX hardcodeados, frames fijos sin Auto Layout o falta de casos de error. Bloquea paso a producción.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Explicación de la Escala del 1 al 5 en los Sliders -->
+            <div class="space-y-3 pt-4 border-t border-slate-100">
+                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-2">
+                    <i class="fa-solid fa-sliders text-brandPink"></i>
+                    <span>2. Significado del Nivel (1 al 5) Asignado en Cada Criterio Individual</span>
+                </h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Al ajustar los sliders de cada rubro, cada valor numérico del 1 al 5 describe el grado de adopción y calidad técnica del elemento evaluado:
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 pt-1">
+                    <!-- Nivel 1 -->
+                    <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex flex-col justify-between space-y-2 border-t-2 border-t-rose-500">
+                        <div>
+                            <div class="flex items-center justify-between">
+                                <span class="w-6 h-6 rounded-lg bg-rose-100 text-rose-700 font-black text-xs font-display flex items-center justify-center">1</span>
+                                <span class="text-[10px] font-bold font-mono text-rose-600">20% Valor</span>
+                            </div>
+                            <h5 class="text-xs font-bold text-slate-900 font-display mt-2">Crítico / Inexistente</h5>
+                            <p class="text-[11px] text-slate-500 leading-snug mt-1">
+                                No se aplica el lineamiento. Contiene capas genéricas (*"Frame 849"*), ausencia total de Auto Layout o estilos huérfanos.
+                            </p>
+                        </div>
+                        <span class="text-[10px] font-bold text-rose-700 bg-rose-50 px-2 py-0.5 rounded border border-rose-200/80 block text-center">Requiere rehacer</span>
+                    </div>
+
+                    <!-- Nivel 2 -->
+                    <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex flex-col justify-between space-y-2 border-t-2 border-t-amber-500">
+                        <div>
+                            <div class="flex items-center justify-between">
+                                <span class="w-6 h-6 rounded-lg bg-amber-100 text-amber-700 font-black text-xs font-display flex items-center justify-center">2</span>
+                                <span class="text-[10px] font-bold font-mono text-amber-600">40% Valor</span>
+                            </div>
+                            <h5 class="text-xs font-bold text-slate-900 font-display mt-2">Básico / En Riesgo</h5>
+                            <p class="text-[11px] text-slate-500 leading-snug mt-1">
+                                Implementación superficial con mezclas de estilos manuales, Auto Layout mal anidado (Fixed) o componentes desvinculados.
+                            </p>
+                        </div>
+                        <span class="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-200/80 block text-center">Alto riesgo de QA</span>
+                    </div>
+
+                    <!-- Nivel 3 -->
+                    <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex flex-col justify-between space-y-2 border-t-2 border-t-blue-500">
+                        <div>
+                            <div class="flex items-center justify-between">
+                                <span class="w-6 h-6 rounded-lg bg-blue-100 text-blue-700 font-black text-xs font-display flex items-center justify-center">3</span>
+                                <span class="text-[10px] font-bold font-mono text-blue-600">60% Valor</span>
+                            </div>
+                            <h5 class="text-xs font-bold text-slate-900 font-display mt-2">Aceptable / Con Deuda</h5>
+                            <p class="text-[11px] text-slate-500 leading-snug mt-1">
+                                Estructura funcional con ~70% de tokens GLUE. Faltan estados interactivos (Hover/Disabled) o documentación detallada.
+                            </p>
+                        </div>
+                        <span class="text-[10px] font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200/80 block text-center">Aprobado parcial</span>
+                    </div>
+
+                    <!-- Nivel 4 -->
+                    <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex flex-col justify-between space-y-2 border-t-2 border-t-purple-600">
+                        <div>
+                            <div class="flex items-center justify-between">
+                                <span class="w-6 h-6 rounded-lg bg-purple-100 text-brandPurple font-black text-xs font-display flex items-center justify-center">4</span>
+                                <span class="text-[10px] font-bold font-mono text-brandPurple">80% Valor</span>
+                            </div>
+                            <h5 class="text-xs font-bold text-slate-900 font-display mt-2">Avanzado / Conforme</h5>
+                            <p class="text-[11px] text-slate-500 leading-snug mt-1">
+                                Excelente uso de Auto Layout responsivo, tokens semánticos vinculados (>90%) y nomenclatura ordenada conforme a GLUE.
+                            </p>
+                        </div>
+                        <span class="text-[10px] font-bold text-brandPurple bg-purple-50 px-2 py-0.5 rounded border border-purple-200/80 block text-center">Apto para Handoff</span>
+                    </div>
+
+                    <!-- Nivel 5 -->
+                    <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex flex-col justify-between space-y-2 border-t-2 border-t-brandPink">
+                        <div>
+                            <div class="flex items-center justify-between">
+                                <span class="w-6 h-6 rounded-lg bg-pink-100 text-brandPink font-black text-xs font-display flex items-center justify-center">5</span>
+                                <span class="text-[10px] font-bold font-mono text-brandPink">100% Valor</span>
+                            </div>
+                            <h5 class="text-xs font-bold text-slate-900 font-display mt-2">Excelente / Benchmark</h5>
+                            <p class="text-[11px] text-slate-500 leading-snug mt-1">
+                                Cero deuda técnica. 100% tokens oficiales, propiedades booleanas e icon swaps inteligentes, matriz de variantes y handoff sin dudas.
+                            </p>
+                        </div>
+                        <span class="text-[10px] font-bold text-brandPink bg-pink-50 px-2 py-0.5 rounded border border-pink-200/80 block text-center">Referente de Calidad</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -761,358 +917,6 @@
                     </label>
                     <input type="text" id="obsCommitment" placeholder="Acción correctiva concreta a validar en el siguiente checkpoint de revisión..." class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brandPink/30 focus:border-brandPink font-medium text-slate-800 transition">
                 </div>
-            </div>
-        </section>
-         <!-- SECCIÓN PRINCIPAL: EXPLICACIÓN DE LA ESCALA DEL 1 AL 5 -->
-        <section class="space-y-6">
-            <div class="flex flex-col sm:flex-row sm:items-end justify-between border-b border-slate-200 pb-4 gap-2">
-                <div>
-                    <span class="text-xs font-bold text-[#e10098] uppercase tracking-widest block">Rúbrica Oficial de Calificación</span>
-                    <h3 class="text-2xl font-bold text-slate-900 font-heading">¿Cómo se califica del 1 al 5 y qué valor tiene cada nota?</h3>
-                </div>
-                <span class="text-xs text-slate-500 font-medium bg-slate-100 px-3 py-1.5 rounded-lg">
-                    <i class="fa-solid fa-scale-balanced text-[#e10098] mr-1"></i> Corte de aprobación: <strong>≥ 4 Estrellas (80%)</strong>
-                </span>
-            </div>
-
-            <p class="text-xs sm:text-sm text-slate-600 max-w-4xl leading-relaxed">
-                Cada archivo o flujo evaluado se califica en una escala ordinal de 5 niveles. Esta métrica determina si el entregable está listo para pasar a desarrollo de TI (Front-End) o si requiere refactorización obligatoria:
-            </p>
-
-            <!-- Grid de las 5 Calificaciones -->
-            <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
-                
-                <!-- Nivel 1 -->
-                <div class="audit-card p-5 rounded-2xl flex flex-col justify-between border-red-200 bg-red-50/20 hover:border-red-400 relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-full h-1 bg-red-500"></div>
-                    <div>
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="w-9 h-9 rounded-xl bg-red-100 text-red-700 font-black flex items-center justify-center text-sm font-heading">
-                                1
-                            </span>
-                            <div class="text-red-500 text-xs">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star text-slate-300"></i>
-                                <i class="fa-regular fa-star text-slate-300"></i>
-                                <i class="fa-regular fa-star text-slate-300"></i>
-                                <i class="fa-regular fa-star text-slate-300"></i>
-                            </div>
-                        </div>
-
-                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-red-600 block mb-0.5">0% a 39% de Valor</span>
-                        <h4 class="text-sm font-bold text-slate-900 font-heading">Crítico / Deuda Severa</h4>
-                        
-                        <p class="text-[11.5px] text-slate-600 mt-2.5 leading-relaxed">
-                            El archivo no cumple con los estándares mínimos. Contiene capas genéricas (*"Frame 142"*), colores hexadecimales hardcodeados y ausencia de Auto Layout.
-                        </p>
-                    </div>
-
-                    <div class="mt-4 pt-3 border-t border-red-100">
-                        <span class="inline-flex items-center gap-1 text-[10.5px] font-bold text-red-700 bg-red-100/80 px-2 py-0.5 rounded-md">
-                            <i class="fa-solid fa-ban"></i> No Apto para Handoff
-                        </span>
-                        <p class="text-[10px] text-slate-500 mt-1.5">Requiere reconstrucción estructural obligatoria.</p>
-                    </div>
-                </div>
-
-                <!-- Nivel 2 -->
-                <div class="audit-card p-5 rounded-2xl flex flex-col justify-between border-amber-200 bg-amber-50/20 hover:border-amber-400 relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-full h-1 bg-amber-500"></div>
-                    <div>
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 font-black flex items-center justify-center text-sm font-heading">
-                                2
-                            </span>
-                            <div class="text-amber-500 text-xs">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star text-slate-300"></i>
-                                <i class="fa-regular fa-star text-slate-300"></i>
-                                <i class="fa-regular fa-star text-slate-300"></i>
-                            </div>
-                        </div>
-
-                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-amber-600 block mb-0.5">40% a 59% de Valor</span>
-                        <h4 class="text-sm font-bold text-slate-900 font-heading">Básico / En Riesgo</h4>
-                        
-                        <p class="text-[11.5px] text-slate-600 mt-2.5 leading-relaxed">
-                            Existe noción de componentes pero con mezclas de estilos desvinculados, Auto Layout mal anidado (Fixed en lugar de Fill) y nomenclaturas desordenadas.
-                        </p>
-                    </div>
-
-                    <div class="mt-4 pt-3 border-t border-amber-100">
-                        <span class="inline-flex items-center gap-1 text-[10.5px] font-bold text-amber-700 bg-amber-100/80 px-2 py-0.5 rounded-md">
-                            <i class="fa-solid fa-triangle-exclamation"></i> Alto Riesgo de QA
-                        </span>
-                        <p class="text-[10px] text-slate-500 mt-1.5">El consultor debe corregir antes de entrega técnica.</p>
-                    </div>
-                </div>
-
-                <!-- Nivel 3 -->
-                <div class="audit-card p-5 rounded-2xl flex flex-col justify-between border-blue-200 bg-blue-50/20 hover:border-blue-400 relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-full h-1 bg-blue-500"></div>
-                    <div>
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="w-9 h-9 rounded-xl bg-blue-100 text-blue-700 font-black flex items-center justify-center text-sm font-heading">
-                                3
-                            </span>
-                            <div class="text-blue-500 text-xs">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star text-slate-300"></i>
-                                <i class="fa-regular fa-star text-slate-300"></i>
-                            </div>
-                        </div>
-
-                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-blue-600 block mb-0.5">60% a 74% de Valor</span>
-                        <h4 class="text-sm font-bold text-slate-900 font-heading">Aceptable / Con Deuda</h4>
-                        
-                        <p class="text-[11.5px] text-slate-600 mt-2.5 leading-relaxed">
-                            Estructura funcional con Auto Layout aceptable y 70% de tokens asociados. Sin embargo, faltan estados interactivos (Hover/Disabled) y especificaciones claras.
-                        </p>
-                    </div>
-
-                    <div class="mt-4 pt-3 border-t border-blue-100">
-                        <span class="inline-flex items-center gap-1 text-[10.5px] font-bold text-blue-700 bg-blue-100/80 px-2 py-0.5 rounded-md">
-                            <i class="fa-solid fa-circle-pause"></i> Aprobado Parcial
-                        </span>
-                        <p class="text-[10px] text-slate-500 mt-1.5">Apto para revisión, pero no listo para cierre definitivo.</p>
-                    </div>
-                </div>
-
-                <!-- Nivel 4 -->
-                <div class="audit-card p-5 rounded-2xl flex flex-col justify-between border-purple-200 bg-purple-50/20 hover:border-purple-400 relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-full h-1 bg-purple-500"></div>
-                    <div>
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="w-9 h-9 rounded-xl bg-purple-100 text-[#833177] font-black flex items-center justify-center text-sm font-heading">
-                                4
-                            </span>
-                            <div class="text-[#833177] text-xs">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star text-slate-300"></i>
-                            </div>
-                        </div>
-
-                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-[#833177] block mb-0.5">75% a 89% de Valor</span>
-                        <h4 class="text-sm font-bold text-slate-900 font-heading">Avanzado / Conforme</h4>
-                        
-                        <p class="text-[11.5px] text-slate-600 mt-2.5 leading-relaxed">
-                            Excelente uso de Auto Layout responsivo, tokens semánticos vinculados (>90%) y nomenclatura atómica ordenada. Cumple con la plantilla de anotaciones para TI.
-                        </p>
-                    </div>
-
-                    <div class="mt-4 pt-3 border-t border-purple-100">
-                        <span class="inline-flex items-center gap-1 text-[10.5px] font-bold text-[#833177] bg-purple-100/80 px-2 py-0.5 rounded-md">
-                            <i class="fa-solid fa-check"></i> Certificado para TI
-                        </span>
-                        <p class="text-[10px] text-slate-500 mt-1.5">Cumple el estándar requerido por GLUE Liverpool.</p>
-                    </div>
-                </div>
-
-                <!-- Nivel 5 -->
-                <div class="audit-card p-5 rounded-2xl flex flex-col justify-between border-pink-300 bg-pink-50/30 hover:border-[#e10098] relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#833177] to-[#e10098]"></div>
-                    <div>
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#833177] to-[#e10098] text-white font-black flex items-center justify-center text-sm font-heading shadow-md shadow-pink-500/20">
-                                5
-                            </span>
-                            <div class="text-[#e10098] text-xs">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                            </div>
-                        </div>
-
-                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-[#e10098] block mb-0.5">90% a 100% de Valor</span>
-                        <h4 class="text-sm font-bold text-slate-900 font-heading">Excelente / Benchmark</h4>
-                        
-                        <p class="text-[11.5px] text-slate-600 mt-2.5 leading-relaxed">
-                            Cero deuda técnica. 100% tokens oficiales, propiedades booleanas e intercambios de instancias inteligentes, matriz de variantes completas y handoff impecable.
-                        </p>
-                    </div>
-
-                    <div class="mt-4 pt-3 border-t border-pink-200">
-                        <span class="inline-flex items-center gap-1 text-[10.5px] font-bold text-[#e10098] bg-pink-100/90 px-2 py-0.5 rounded-md">
-                            <i class="fa-solid fa-trophy"></i> Referente de Calidad
-                        </span>
-                        <p class="text-[10px] text-slate-500 mt-1.5">Sirve como archivo modelo para el equipo de diseño.</p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- SECCIÓN: LOS 5 EJES TÉCNICOS EVALUADOS -->
-        <section class="space-y-6">
-            <div class="border-b border-slate-200 pb-4">
-                <span class="text-xs font-bold text-[#e10098] uppercase tracking-widest block">Dimensiones de la Auditoría</span>
-                <h3 class="text-xl sm:text-2xl font-bold text-slate-900 font-heading">Los 5 Ejes de Higiene Digital & Arquitectura Figma</h3>
-                <p class="text-slate-600 text-xs sm:text-sm mt-1">
-                    Cada uno de estos 5 pilares se califica de manera independiente de 1 a 5 estrellas para obtener el promedio final del consultor:
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                
-                <!-- Pilar 1 -->
-                <div class="audit-card p-5 rounded-2xl space-y-3">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-pink-50 text-[#e10098] flex items-center justify-center text-lg">
-                            <i class="fa-solid fa-folder-tree"></i>
-                        </div>
-                        <div>
-                            <span class="text-[10px] font-bold uppercase text-slate-400">Pilar 01</span>
-                            <h4 class="text-sm font-bold text-slate-900 font-heading">Nomenclatura & Higiene</h4>
-                        </div>
-                    </div>
-                    <ul class="text-xs text-slate-600 space-y-2 pt-1 border-t border-slate-100">
-                        <li class="flex items-start gap-2">
-                            <i class="fa-solid fa-check text-emerald-500 mt-0.5 text-[11px]"></i>
-                            <span>Nomenclatura atómica (`Component/Variant/State`).</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i class="fa-solid fa-check text-emerald-500 mt-0.5 text-[11px]"></i>
-                            <span>0% capas con nombres genéricos (*"Group 24"*, *"Rectangle 5"*).</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i class="fa-solid fa-check text-emerald-500 mt-0.5 text-[11px]"></i>
-                            <span>Eliminación de capas invisibles o elementos basura.</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Pilar 2 -->
-                <div class="audit-card p-5 rounded-2xl space-y-3">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-purple-50 text-[#833177] flex items-center justify-center text-lg">
-                            <i class="fa-solid fa-table-cells-large"></i>
-                        </div>
-                        <div>
-                            <span class="text-[10px] font-bold uppercase text-slate-400">Pilar 02</span>
-                            <h4 class="text-sm font-bold text-slate-900 font-heading">Auto Layout & Responsividad</h4>
-                        </div>
-                    </div>
-                    <ul class="text-xs text-slate-600 space-y-2 pt-1 border-t border-slate-100">
-                        <li class="flex items-start gap-2">
-                            <i class="fa-solid fa-check text-emerald-500 mt-0.5 text-[11px]"></i>
-                            <span>Uso correcto de *Hug Contents* y *Fill Container*.</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i class="fa-solid fa-check text-emerald-500 mt-0.5 text-[11px]"></i>
-                            <span>Anidación limpia sin frames absolutos innecesarios.</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i class="fa-solid fa-check text-emerald-500 mt-0.5 text-[11px]"></i>
-                            <span>Adaptabilidad fluida en breakpoints Mobile, Tablet y Desktop.</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Pilar 3 -->
-                <div class="audit-card p-5 rounded-2xl space-y-3">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-pink-50 text-[#e10098] flex items-center justify-center text-lg">
-                            <i class="fa-solid fa-sliders"></i>
-                        </div>
-                        <div>
-                            <span class="text-[10px] font-bold uppercase text-slate-400">Pilar 03</span>
-                            <h4 class="text-sm font-bold text-slate-900 font-heading">Design Tokens & Variables</h4>
-                        </div>
-                    </div>
-                    <ul class="text-xs text-slate-600 space-y-2 pt-1 border-t border-slate-100">
-                        <li class="flex items-start gap-2">
-                            <i class="fa-solid fa-check text-emerald-500 mt-0.5 text-[11px]"></i>
-                            <span>Consumo al 100% de variables semánticas de color (`Key Surface`).</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i class="fa-solid fa-check text-emerald-500 mt-0.5 text-[11px]"></i>
-                            <span>Cero colores `#HEX` hardcodeados en rellenos o trazos.</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i class="fa-solid fa-check text-emerald-500 mt-0.5 text-[11px]"></i>
-                            <span>Variables de tipografía, spacing y border-radius unificadas.</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Pilar 4 -->
-                <div class="audit-card p-5 rounded-2xl space-y-3">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-purple-50 text-[#833177] flex items-center justify-center text-lg">
-                            <i class="fa-solid fa-cubes"></i>
-                        </div>
-                        <div>
-                            <span class="text-[10px] font-bold uppercase text-slate-400">Pilar 04</span>
-                            <h4 class="text-sm font-bold text-slate-900 font-heading">Componentes & Variantes</h4>
-                        </div>
-                    </div>
-                    <ul class="text-xs text-slate-600 space-y-2 pt-1 border-t border-slate-100">
-                        <li class="flex items-start gap-2">
-                            <i class="fa-solid fa-check text-emerald-500 mt-0.5 text-[11px]"></i>
-                            <span>Uso de Component Properties (Boolean, Instance Swap, Text).</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i class="fa-solid fa-check text-emerald-500 mt-0.5 text-[11px]"></i>
-                            <span>Cobertura de estados: Default, Hover, Pressed, Focused, Disabled.</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i class="fa-solid fa-check text-emerald-500 mt-0.5 text-[11px]"></i>
-                            <span>Manejo de escenarios extremos (Text overflow, cadenas largas).</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Pilar 5 -->
-                <div class="audit-card p-5 rounded-2xl space-y-3">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-800 flex items-center justify-center text-lg">
-                            <i class="fa-solid fa-file-signature"></i>
-                        </div>
-                        <div>
-                            <span class="text-[10px] font-bold uppercase text-slate-400">Pilar 05</span>
-                            <h4 class="text-sm font-bold text-slate-900 font-heading">Documentación & Handoff TI</h4>
-                        </div>
-                    </div>
-                    <ul class="text-xs text-slate-600 space-y-2 pt-1 border-t border-slate-100">
-                        <li class="flex items-start gap-2">
-                            <i class="fa-solid fa-check text-emerald-500 mt-0.5 text-[11px]"></i>
-                            <span>Plantilla oficial de Anotaciones GLUE completada.</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i class="fa-solid fa-check text-emerald-500 mt-0.5 text-[11px]"></i>
-                            <span>Especificaciones de comportamiento, interacciones y micro-motion.</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i class="fa-solid fa-check text-emerald-500 mt-0.5 text-[11px]"></i>
-                            <span>Claridad para que los desarrolladores no tengan dudas técnicas.</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Callout de Apoyo para Consultores -->
-                <div class="audit-card p-5 rounded-2xl bg-gradient-to-br from-pink-50 via-white to-purple-50 border-pink-200 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center gap-2 text-[#e10098] mb-2 font-bold text-xs uppercase tracking-wider">
-                            <i class="fa-solid fa-lightbulb"></i> ¿Cómo mejorar la nota?
-                        </div>
-                        <h4 class="text-sm font-bold text-slate-900 font-heading">Iteración guiada</h4>
-                        <p class="text-xs text-slate-600 leading-relaxed mt-1">
-                            Las auditorías no son punitivas: su meta es que los consultores aprendan las buenas prácticas de GLUE. Tras recibir los comentarios, el consultor tiene hasta 3 días hábiles para corregir y subir de nivel.
-                        </p>
-                    </div>
-                    <div class="pt-3 border-t border-pink-100 text-[11px] text-[#833177] font-semibold">
-                        Mentoría disponible con Iván y Líderes UX.
-                    </div>
-                </div>
-
             </div>
         </section>
 
