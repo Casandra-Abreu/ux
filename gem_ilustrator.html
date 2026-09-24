@@ -159,6 +159,7 @@
             text-decoration: none;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
+            border: none;
         }
 
         .btn-primary {
@@ -173,6 +174,16 @@
             box-shadow: 0 12px 25px rgba(225, 0, 152, 0.35);
         }
 
+        .btn-secondary {
+            background-color: var(--text-dark);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #000;
+            transform: translateY(-2px);
+        }
+
         /* --- TÍTULOS DE SECCIÓN --- */
         .section-title {
             text-align: center;
@@ -181,13 +192,85 @@
             font-weight: 800;
         }
 
+        /* --- GENERADOR DE PROMPTS --- */
+        .generator-card {
+            background: var(--bg-surface);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            border-top: 6px solid var(--primary);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-label {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+
+        .form-input, .form-select {
+            padding: 14px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background-color: var(--bg-body);
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-light);
+            background-color: #fff;
+        }
+
+        .result-container {
+            background: var(--bg-body);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            margin-top: 24px;
+            border: 2px dashed #cbd5e1;
+            position: relative;
+        }
+
+        .result-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--text-dark);
+            min-height: 80px;
+        }
+
+        .generator-actions {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
         /* --- EJEMPLOS DE PROMPTS --- */
         .ejemplos-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 30px;
         }
-        
+
         .card-panel {
             background: var(--bg-surface);
             padding: 40px;
@@ -338,7 +421,7 @@
         }
 
         .bp-list { list-style: none; }
-        
+
         .bp-list li {
             margin-bottom: 18px;
             padding-left: 35px;
@@ -346,7 +429,7 @@
             color: var(--text-gray);
             font-size: 1rem;
         }
-        
+
         .bp-list li strong { color: var(--text-dark); }
 
         .do-list li::before {
@@ -370,18 +453,18 @@
             box-shadow: var(--shadow-sm);
             border-left: 6px solid var(--warning);
         }
-        
+
         .iteracion-card h3 {
             font-size: 1.4rem;
             margin-bottom: 15px;
         }
-        
+
         .iteracion-card ul {
             margin-top: 15px;
             padding-left: 20px;
             color: var(--text-gray);
         }
-        
+
         .iteracion-card li { margin-bottom: 10px; }
 
         /* --- COLORES --- */
@@ -413,6 +496,8 @@
             }
             .hero-text h1 { font-size: 2.8rem; }
             .hero-text p { max-width: 100%; margin: 0 auto 30px auto; }
+            .form-grid { grid-template-columns: 1fr; }
+            .generator-actions { flex-direction: column; }
             .dos-donts-grid { grid-template-columns: 1fr; }
             .formula-banner .formula-text { font-size: 1.1rem; }
         }
@@ -427,6 +512,7 @@
             GEM Ilustrador
         </a>
         <ul class="nav-links">
+            <li><a href="#generador">Generador</a></li>
             <li><a href="#ejemplos">Ejemplos</a></li>
             <li><a href="#como-funciona">Cómo Funciona</a></li>
             <li><a href="#mejores-practicas">Mejores Prácticas</a></li>
@@ -435,7 +521,7 @@
     </nav>
 
     <div class="container">
-        
+
         <!-- HEADER A 2 COLUMNAS -->
         <header id="inicio" class="hero">
             <div class="hero-text">
@@ -443,20 +529,89 @@
                 <p>Herramienta oficial para diseñar gráficos minimalistas con estilo lineal y manchas de color exactas para todas las marcas de El Puerto de Liverpool. Rápido, preciso y escalable.</p>
                 <a href="https://gemini.google.com/gem/1r4HP-glpqIqlXXfjVRghru6OH2y7EtPp?usp=sharing" target="_blank" class="btn btn-primary">Abrir GEM en Gemini</a>
             </div>
-            
+
             <div class="hero-image-container">
                 <img src="https://casandra-abreu.github.io/ux/imagegem.jpeg" alt="Ejemplo de ilustración GEM">
             </div>
         </header>
 
-        <!-- SECCIÓN DE EJEMPLOS DE PROMPTS (AHORA ES LO PRIMERO) -->
+        <!-- SECCIÓN NUEVA: GENERADOR DE PROMPTS -->
+        <section id="generador">
+            <h2 class="section-title">Generador de Prompts Mágicos ✨</h2>
+            <div class="generator-card">
+                <p style="text-align: center; color: var(--text-gray); margin-bottom: 30px;">Llena los campos según la fórmula (Quién + Acción + Props + Marca) y obtén la instrucción perfecta para pegar en el GEM.</p>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="inp-quien">👤 Quién / Qué (Personaje)</label>
+                        <input type="text" id="inp-quien" class="form-input" placeholder="Ej. Una mujer joven sonriendo">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="inp-accion">🎬 Acción</label>
+                        <input type="text" id="inp-accion" class="form-input" placeholder="Ej. sentada en el suelo usando su celular">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label class="form-label" for="inp-props">📦 Utilería (Props & Objetos)</label>
+                        <input type="text" id="inp-props" class="form-input" placeholder="Ej. rodeada de cajas de compras vacías y un ticket largo">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="inp-marca">🎨 Marca (Color de fondo)</label>
+                        <select id="inp-marca" class="form-select">
+                            <option value="Pink LP SB">Pink LP SB (#FCE6F5)</option>
+                            <option value="Purple SB">Purple SB (#EEE9F0)</option>
+                            <option value="Purple EPL">Purple EPL (#F3EAF1)</option>
+                            <option value="Purple BRU">Purple BRU (#EFEAF4)</option>
+                            <option value="Gray PB">Gray PB (#E8EAEC)</option>
+                            <option value="Brown DP">Brown DP (#E7E5E2)</option>
+                            <option value="Brown FB">Brown FB (#E8E4DA)</option>
+                            <option value="Blue PB PBK WS WE">Blue PB PBK WS WE (#E8ECF1)</option>
+                            <option value="Blue Gap">Blue Gap (#E6E8F6)</option>
+                            <option value="Blue TRU">Blue TRU (#E7EDF8)</option>
+                            <option value="Blue DCK">Blue DCK (#E9ECF1)</option>
+                            <option value="Lightblue TRU">Lightblue TRU (#E5F9FF)</option>
+                            <option value="Green BR">Green BR (#F6F4EB)</option>
+                            <option value="Orange EPL">Orange EPL (#FFF0E7)</option>
+                            <option value="Red PB PBK WS WE">Red PB PBK WS WE (#F5E6E6)</option>
+                            <option value="Yellow TRU">Yellow TRU (#FFF9E0)</option>
+                            <option value="DCK Spring-lightblue">DCK Spring-lightblue (#C8E0F0)</option>
+                            <option value="DCK White cream">DCK White cream (#F7F3E6)</option>
+                            <option value="Otro">Otro (Ingresar código HEX)</option>
+                        </select>
+                        <!-- Campo oculto que aparece cuando eligen "Otro" -->
+                        <input type="text" id="inp-color-manual" class="form-input" placeholder="Ej. #FF5733" style="display: none; margin-top: 8px;">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="inp-texto">💬 Texto / Diálogo (Opcional)</label>
+                        <input type="text" id="inp-texto" class="form-input" placeholder="Ej. ¡Mi pedido llegó!">
+                    </div>
+                </div>
+
+                <div class="generator-actions">
+                    <button id="btn-generar" class="btn btn-primary">Generar Instrucción</button>
+                    <button id="btn-copiar" class="btn btn-secondary">Copiar al Portapapeles</button>
+                </div>
+
+                <div class="result-container">
+                    <span class="prompt-label" style="margin-bottom: 10px;">Tu Prompt Listo Para Usar:</span>
+                    <div id="resultado-prompt" class="result-text">
+                        Aquí aparecerá tu instrucción exacta para el GEM...
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE EJEMPLOS DE PROMPTS -->
         <section id="ejemplos">
             <h2 class="section-title">Ejemplos de Prompts</h2>
             <div class="ejemplos-grid">
                 <div class="card-panel">
                     <h3>✍️ Copia y pega estos ejemplos</h3>
                     <p style="margin-bottom: 25px; color: var(--text-gray);">Úsalos como base, edita los detalles y ponlos directamente en el GEM para generar tus ilustraciones rápidamente.</p>
-                    
+
                     <div class="prompt-box">
                         <span class="prompt-label">Ejemplo Básico</span>
                         "Crea una ilustración con un joven sonriendo mientras sostiene una bolsa de compras. A su lado hay un carrito de metal. Pon un globo de pensamiento con un símbolo de exclamación. Usa como fondo la mancha de color de la marca Blue Gap."
@@ -473,26 +628,26 @@
         <!-- SECCIÓN DE PASOS CREATIVOS -->
         <section id="como-funciona">
             <h2 class="section-title">¿Cómo funciona?</h2>
-            
+
             <div class="steps-grid">
                 <div class="step-card">
                     <div class="step-number">1</div>
                     <h3>Imagina la Escena</h3>
                     <p>Define personajes y acciones (ej. un joven en su laptop, recibiendo un paquete). Describe los objetos a su alrededor.</p>
                 </div>
-                
+
                 <div class="step-card">
                     <div class="step-number">2</div>
                     <h3>Elige tu Marca</h3>
                     <p>Indica para qué marca es la imagen. El GEM adaptará automáticamente la mancha de color de fondo.</p>
                 </div>
-                
+
                 <div class="step-card">
                     <div class="step-number">3</div>
                     <h3>Agrega Detalles</h3>
                     <p>Si lo requieres, pide que se incluyan globos de diálogo o de pensamiento en español.</p>
                 </div>
-                
+
                 <div class="step-card">
                     <div class="step-number">4</div>
                     <h3>Genera y Ajusta</h3>
@@ -510,7 +665,7 @@
         <!-- MEJORES PRÁCTICAS -->
         <section id="mejores-practicas">
             <h2 class="section-title">Mejores Prácticas</h2>
-            
+
             <div class="formula-banner">
                 <h3>🏆 La Fórmula del Prompt Perfecto</h3>
                 <p>Para obtener el mejor resultado a la primera, estructura tu petición así:</p>
@@ -556,9 +711,9 @@
             <div class="card-panel" style="text-align: center;">
                 <h2 class="section-title" style="margin-bottom: 20px;">🎨 Paleta de Tokens (Color Exacto)</h2>
                 <p style="color: var(--text-gray); font-size: 1.1rem; max-width: 800px; margin: 0 auto;">Si necesitas forzar un tono exacto (como el valor 50 o 75 de una marca específica), busca el código HEX en nuestra paleta oficial interactiva.</p>
-                
+
                 <a href="https://codepen.io/Sa-l-Ulises-Hern-ndez-Cruz/pen/JoPrELM" target="_blank" class="codepen-link">Explorar Tokens en CodePen →</a>
-                
+
                 <p style="margin-top: 25px; font-size: 1rem; color: var(--text-gray);">
                     <strong>Tip:</strong> Dile al GEM: <em>"Usa exactamente el código HEX #XXXXXX para la mancha de fondo".</em>
                 </p>
@@ -567,5 +722,86 @@
 
     </div>
 
+    <!-- SCRIPT DEL GENERADOR DE PROMPTS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btnGenerar = document.getElementById('btn-generar');
+            const btnCopiar = document.getElementById('btn-copiar');
+            const resultado = document.getElementById('resultado-prompt');
+            const selectMarca = document.getElementById('inp-marca');
+            const inputColorManual = document.getElementById('inp-color-manual');
+
+            // Mostrar/ocultar el input manual si seleccionan "Otro"
+            selectMarca.addEventListener('change', (e) => {
+                if (e.target.value === 'Otro') {
+                    inputColorManual.style.display = 'block';
+                } else {
+                    inputColorManual.style.display = 'none';
+                }
+            });
+
+            function generarPrompt() {
+                const quien = document.getElementById('inp-quien').value.trim() || "un personaje";
+                const accion = document.getElementById('inp-accion').value.trim() || "realizando una acción";
+                const props = document.getElementById('inp-props').value.trim();
+                const marca = selectMarca.value;
+                const colorManual = inputColorManual.value.trim();
+                const texto = document.getElementById('inp-texto').value.trim();
+
+                let promptTexto = `Crea una ilustración con ${quien} ${accion}.`;
+                
+                if (props) {
+                    promptTexto += ` Como utilería alrededor incluye: ${props}.`;
+                }
+
+                if (texto) {
+                    promptTexto += ` Pon un globo de pensamiento o diálogo que diga '${texto}'.`;
+                }
+
+                // Condición para evaluar si es una marca predefinida o código manual
+                if (marca === 'Otro') {
+                    // Si no puso color, usar uno por defecto para que no se rompa el prompt
+                    const hexCode = colorManual !== "" ? colorManual : "#FCE6F5";
+                    promptTexto += ` Usa exactamente el código HEX ${hexCode} para la mancha de fondo.`;
+                } else {
+                    promptTexto += ` Usa como fondo la mancha de color de la marca ${marca}.`;
+                }
+
+                resultado.textContent = promptTexto;
+                
+                // Efecto visual de generación
+                resultado.style.opacity = 0;
+                setTimeout(() => {
+                    resultado.style.opacity = 1;
+                    resultado.style.transition = 'opacity 0.5s';
+                }, 50);
+            }
+
+            function copiarAlPortapapeles() {
+                const textoParaCopiar = resultado.textContent;
+                
+                if (textoParaCopiar.includes("Aquí aparecerá tu instrucción")) {
+                    alert("¡Genera un prompt primero!");
+                    return;
+                }
+
+                navigator.clipboard.writeText(textoParaCopiar).then(() => {
+                    const originalText = btnCopiar.innerText;
+                    btnCopiar.innerText = "¡Copiado! ✅";
+                    btnCopiar.style.backgroundColor = "#10b981";
+                    
+                    setTimeout(() => {
+                        btnCopiar.innerText = originalText;
+                        btnCopiar.style.backgroundColor = "var(--text-dark)";
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Error al copiar: ', err);
+                });
+            }
+
+            btnGenerar.addEventListener('click', generarPrompt);
+            btnCopiar.addEventListener('click', copiarAlPortapapeles);
+        });
+    </script>
 </body>
 </html>
