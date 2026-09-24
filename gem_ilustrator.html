@@ -584,9 +584,15 @@
                         <input type="text" id="inp-color-manual" class="form-input" placeholder="Ej. #FF5733" style="display: none; margin-top: 8px;">
                     </div>
 
+                    <!-- NUEVO: Opciones de Texto/Diálogo -->
                     <div class="form-group">
-                        <label class="form-label" for="inp-texto">💬 Texto / Diálogo (Opcional)</label>
-                        <input type="text" id="inp-texto" class="form-input" placeholder="Ej. ¡Mi pedido llegó!">
+                        <label class="form-label" for="inp-opcion-texto">💬 Texto / Diálogo</label>
+                        <select id="inp-opcion-texto" class="form-select">
+                            <option value="sin_texto">Sin texto / Ninguno</option>
+                            <option value="con_texto">Sí, agregar texto</option>
+                        </select>
+                        <!-- Campo oculto que aparece cuando eligen "Sí" -->
+                        <input type="text" id="inp-texto" class="form-input" placeholder="Ej. ¡Mi pedido llegó!" style="display: none; margin-top: 8px;">
                     </div>
                 </div>
 
@@ -728,10 +734,16 @@
             const btnGenerar = document.getElementById('btn-generar');
             const btnCopiar = document.getElementById('btn-copiar');
             const resultado = document.getElementById('resultado-prompt');
+            
+            // Elementos de Color Manual
             const selectMarca = document.getElementById('inp-marca');
             const inputColorManual = document.getElementById('inp-color-manual');
 
-            // Mostrar/ocultar el input manual si seleccionan "Otro"
+            // Elementos de Opciones de Texto
+            const selectOpcionTexto = document.getElementById('inp-opcion-texto');
+            const inputTexto = document.getElementById('inp-texto');
+
+            // Mostrar/ocultar el input manual si seleccionan "Otro" en Marca
             selectMarca.addEventListener('change', (e) => {
                 if (e.target.value === 'Otro') {
                     inputColorManual.style.display = 'block';
@@ -740,13 +752,25 @@
                 }
             });
 
+            // Mostrar/ocultar el input de texto dependiendo de la opción
+            selectOpcionTexto.addEventListener('change', (e) => {
+                if (e.target.value === 'con_texto') {
+                    inputTexto.style.display = 'block';
+                } else {
+                    inputTexto.style.display = 'none';
+                }
+            });
+
             function generarPrompt() {
                 const quien = document.getElementById('inp-quien').value.trim() || "un personaje";
                 const accion = document.getElementById('inp-accion').value.trim() || "realizando una acción";
                 const props = document.getElementById('inp-props').value.trim();
+                
                 const marca = selectMarca.value;
                 const colorManual = inputColorManual.value.trim();
-                const texto = document.getElementById('inp-texto').value.trim();
+                
+                const opcionTexto = selectOpcionTexto.value;
+                const texto = inputTexto.value.trim();
 
                 let promptTexto = `Crea una ilustración con ${quien} ${accion}.`;
                 
@@ -754,17 +778,19 @@
                     promptTexto += ` Como utilería alrededor incluye: ${props}.`;
                 }
 
-                if (texto) {
-                    promptTexto += ` Pon un globo de pensamiento o diálogo que diga '${texto}'.`;
-                }
-
-                // Condición para evaluar si es una marca predefinida o código manual
+                // Condición para el color / marca
                 if (marca === 'Otro') {
-                    // Si no puso color, usar uno por defecto para que no se rompa el prompt
                     const hexCode = colorManual !== "" ? colorManual : "#FCE6F5";
                     promptTexto += ` Usa exactamente el código HEX ${hexCode} para la mancha de fondo.`;
                 } else {
                     promptTexto += ` Usa como fondo la mancha de color de la marca ${marca}.`;
+                }
+
+                // Condición para el texto o evitar alucinaciones de texto
+                if (opcionTexto === 'con_texto' && texto !== '') {
+                    promptTexto += ` Pon un globo de pensamiento o diálogo que diga '${texto}'.`;
+                } else {
+                    promptTexto += ` IMPORTANTE: No agregues ningún texto, letras ni globos de diálogo en la imagen.`;
                 }
 
                 resultado.textContent = promptTexto;
