@@ -102,8 +102,8 @@
             <div class="flex items-center gap-2 sm:gap-3">
                 <span id="cardCounterBadge" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-pink-50 border border-pink-200 text-[#e10098]">
                     <i class="fa-solid fa-layer-group"></i>
-                    <!-- Contador actualizado a 5 -->
-                    <span id="activeCount">5 Activos</span>
+                    <!-- Contador actualizado a 7 -->
+                    <span id="activeCount">7 Activos</span>
                 </span>
             </div>
         </div>
@@ -191,7 +191,7 @@
         import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, doc, setDoc, getDocs, collection, onSnapshot, writeBatch } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Tarjetas base actualizadas
+        // Tarjetas base actualizadas con Gem de Copy
         const initialCards = [
             {
                 id: 'card-1',
@@ -247,6 +247,28 @@
                 iconBg: 'bg-indigo-50 text-indigo-500',
                 badgeColor: 'bg-indigo-50 text-indigo-600 border-indigo-200',
                 createdAt: 5000
+            },
+            {
+                id: 'card-6',
+                title: 'Gem para Banners Entrada Única',
+                description: 'Crea el pront para solicitar la creación de un banner y revisa las especificaciones gráficas.',
+                link: 'gem_banners.html',
+                category: 'Herramienta',
+                icon: 'fa-rectangle-ad',
+                iconBg: 'bg-teal-50 text-teal-600',
+                badgeColor: 'bg-teal-50 text-teal-700 border-teal-200',
+                createdAt: 6000
+            },
+            {
+                id: 'card-7',
+                title: 'Gem de Copy',
+                description: 'Explicación y guía de uso para generar copys utilizando el modelo Gem integrado en nuestro flujo.',
+                link: 'gem_copy.html',
+                category: 'Herramienta',
+                icon: 'fa-pen-nib',
+                iconBg: 'bg-sky-50 text-sky-600',
+                badgeColor: 'bg-sky-50 text-sky-700 border-sky-200',
+                createdAt: 7000
             }
         ];
 
