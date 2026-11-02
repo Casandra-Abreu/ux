@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión 1 a 1 Estratégica: Evaluación de Liderazgo — Lu Cázares (Nov 2026)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandPurple: '#833177',
+                        brandPink: '#E10098',
+                        brandDark: '#110D1E',
+                        surfaceCard: '#1A1528',
+                        accentAmber: '#F59E0B',
+                        accentEmerald: '#10B981',
+                        accentRose: '#F43F5E',
+                        accentIndigo: '#6366F1'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Poppins', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Smooth Slide Deck Experience */
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: #0c0914;
+            color: #f1f5f9;
+        }
+
+        .slide-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 2.5rem 3.5rem;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            box-sizing: border-box;
+        }
+
+        .gradient-brand {
+            background: linear-gradient(135deg, #833177 0%, #E10098 100%);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #f43f5e 0%, #E10098 50%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gradient-card {
+            background: linear-gradient(180deg, rgba(26, 21, 40, 0.95) 0%, rgba(17, 13, 30, 0.98) 100%);
+            border: 1px solid rgba(225, 0, 152, 0.15);
+        }
+
+        .progress-glow {
+            box-shadow: 0 0 15px rgba(225, 0, 152, 0.4);
+        }
+
+        /* Slide Transition helper */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0c0914;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #833177;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #E10098;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased">
+
+    <!-- FIXED TOP BAR / CONTROLS -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-black/60 backdrop-blur-md border-b border-white/10 px-6 py-3 flex items-center justify-between text-xs">
+        <div class="flex items-center gap-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-brandPink animate-ping"></span>
+            <span class="font-display font-bold tracking-wider uppercase text-white/90">Liverpool UX Operations</span>
+            <span class="text-white/30">|</span>
+            <span class="text-white/60 font-mono">1:1 Sesión Gerencial • 02 Nov 2026</span>
+        </div>
+        <div class="flex items-center gap-4">
+            <span class="text-white/40 hidden sm:inline">Navega con scroll o los botones</span>
+            <div class="flex items-center gap-1.5 bg-white/5 p-1 rounded-lg border border-white/10">
+                <button onclick="scrollToSlide('prev')" class="px-2.5 py-1 hover:bg-white/10 rounded text-white/70 hover:text-white transition" title="Anterior">
+                    <i class="fa-solid fa-chevron-up"></i>
+                </button>
+                <span id="currentSlideNumber" class="font-mono font-bold text-brandPink px-2">1 / 8</span>
+                <button onclick="scrollToSlide('next')" class="px-2.5 py-1 hover:bg-white/10 rounded text-white/70 hover:text-white transition" title="Siguiente">
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+            </div>
+            <button onclick="window.print()" class="px-3 py-1 bg-white/10 hover:bg-white/20 text-white rounded font-medium flex items-center gap-1.5 transition">
+                <i class="fa-solid fa-print"></i>
+                <span class="hidden md:inline">Imprimir / PDF</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="pt-12">
+
+        <!-- ==========================================
+             SLIDE 1: PORTADA & CONTEXTO HISTÓRICO
+             ========================================== -->
+        <section id="slide-1" class="slide-section justify-between">
+            <div class="flex justify-between items-center text-xs tracking-widest uppercase text-white/40 font-mono">
+                <span>01 // APERTURA Y MARCO EVALUATIVO</span>
+                <span>AUDITORÍA DE GOBERNANZA & LIDERAZGO</span>
+            </div>
+
+            <div class="max-w-4xl my-auto py-12 space-y-6">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brandPurple/20 border border-brandPink/30 text-brandPink text-xs font-semibold">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                    <span>Calibración Formal: Parámetros Ago–Sep 2026 vs. Hechos a Noviembre 2026</span>
+                </div>
+
+                <h1 class="font-display font-extrabold text-4xl sm:text-6xl text-white tracking-tight leading-tight">
+                    Evaluación de Desempeño,<br>
+                    <span class="gradient-text">Evolución y Realidad Operativa</span>
+                </h1>
+
+                <p class="text-base sm:text-lg text-white/70 leading-relaxed font-light max-w-3xl">
+                    Sesión de calibración profunda entre los <strong>compromisos asumidos en el Plan Transformacional</strong> (Julio–Septiembre 2026) y los <strong>hechos críticos observados</strong> en la gestión de equipo, relación con desarrollo, presencia en campo y gobernanza a la fecha.
+                </p>
+
+                <!-- Metadata Grid -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-white/10 text-xs">
+                    <div>
+                        <span class="text-white/40 block mb-0.5">Coordinadora:</span>
+                        <strong class="text-white text-sm">Lourdes Cázares (Lu)</strong>
+                    </div>
+                    <div>
+                        <span class="text-white/40 block mb-0.5">Gerente Evaluadora:</span>
+                        <strong class="text-white text-sm">Casandra Abreu</strong>
+                    </div>
+                    <div>
+                        <span class="text-white/40 block mb-0.5">Fecha de Corte:</span>
+                        <strong class="text-white text-sm font-mono">2 de Noviembre, 2026</strong>
+                    </div>
+                    <div>
+                        <span class="text-white/40 block mb-0.5">Nuevo Dominio:</span>
+                        <strong class="text-brandPink text-sm">Puntos de Venta en Tienda</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center text-xs text-white/40 border-t border-white/5 pt-4">
+                <span>El Puerto de Liverpool S.A.B. de C.V.</span>
+                <span class="flex items-center gap-2 text-brandPink">
+                    <span>Desliza para ver el balance de cumplimiento</span>
+                    <i class="fa-solid fa-arrow-down animate-bounce"></i>
+                </span>
+            </div>
+        </section>
+
+
+        <!-- ==========================================
+             SLIDE 2: RESUMEN COMPARATIVO (PLAN VS. REALIDAD)
+             ========================================== -->
+        <section id="slide-2" class="slide-section">
+            <div class="flex justify-between items-center text-xs tracking-widest uppercase text-white/40 font-mono">
+                <span>02 // RADIOGRAFÍA DE CUMPLIMIENTO</span>
+                <span>PLAN TRANSFORMACIONAL VS. HECHOS</span>
+            </div>
+
+            <div class="my-auto py-8">
+                <div class="mb-8">
+                    <h2 class="font-display font-bold text-3xl text-white">
+                        ¿Dónde estábamos y dónde estamos hoy?
+                    </h2>
+                    <p class="text-white/60 text-sm mt-1">
+                        Contrastación objetiva entre los parámetros firmados en el PDF y el estatus real registrado al 2 de Noviembre de 2026.
+                    </p>
+                </div>
+
+                <!-- Comparison Table -->
+                <div class="overflow-x-auto rounded-2xl border border-white/10 gradient-card shadow-2xl">
+                    <table class="w-full text-left text-xs">
+                        <thead class="bg-white/5 border-b border-white/10 text-white/60 font-mono uppercase tracking-wider">
+                            <tr>
+                                <th class="p-4 w-1/4">Eje Estratégico (Plan PDF)</th>
+                                <th class="p-4 w-1/3">Compromiso / Parámetro Fijado</th>
+                                <th class="p-4 w-1/3">Hecho Observable al 2 Nov 2026</th>
+                                <th class="p-4 text-center">Score</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-white/5 text-white/80">
+                            <!-- Eje 1 -->
+                            <tr class="hover:bg-white/[0.02] transition">
+                                <td class="p-4 font-semibold text-white">
+                                    <span class="text-brandPink block text-[10px] uppercase font-mono">EJE 1</span>
+                                    Presencia Ejecutiva & Negociación
+                                </td>
+                                <td class="p-4 text-white/70">
+                                    • Eliminar conducta pendular (ni maleable ni impositiva).<br>
+                                    • Modelo AEC ante PMs y Devs.<br>
+                                    • Postura propia sin repetir palabras de otros.
+                                </td>
+                                <td class="p-4 text-white/70">
+                                    <span class="text-rose-400 font-medium">Incidente Dulcería (17 Oct):</span> Se buscó a funcionales saltándose el acuerdo con Ángel (Devs), escalando el conflicto y llamándolo "capricho". La Gerente tuvo que intervenir para retomar el control en la retro.
+                                </td>
+                                <td class="p-4 text-center">
+                                    <span class="px-2 py-1 bg-rose-500/20 text-rose-300 border border-rose-500/30 rounded-full font-mono font-bold text-[11px]">25%</span>
+                                </td>
+                            </tr>
+
+                            <!-- Eje 2 -->
+                            <tr class="hover:bg-white/[0.02] transition">
+                                <td class="p-4 font-semibold text-white">
+                                    <span class="text-brandPink block text-[10px] uppercase font-mono">EJE 2</span>
+                                    Gobernanza de Equipo & Retención
+                                </td>
+                                <td class="p-4 text-white/70">
+                                    • 1:1s inamovibles quincenales.<br>
+                                    • Retención: 0% fuga no planificada.<br>
+                                    • Seguridad psicológica y reconocimiento de méritos ajenos.
+                                </td>
+                                <td class="p-4 text-white/70">
+                                    <span class="text-rose-400 font-medium">4 casos críticos de talento:</span> Salida de Roger por abandono; Mafer renunció por incertidumbre; Bertha no renovada por falta de guía; Viri solicitando auxilio externo de forma recurrente.
+                                </td>
+                                <td class="p-4 text-center">
+                                    <span class="px-2 py-1 bg-rose-500/20 text-rose-300 border border-rose-500/30 rounded-full font-mono font-bold text-[11px]">20%</span>
+                                </td>
+                            </tr>
+
+                            <!-- Eje 3 -->
+                            <tr class="hover:bg-white/[0.02] transition">
+                                <td class="p-4 font-semibold text-white">
+                                    <span class="text-brandPink block text-[10px] uppercase font-mono">EJE 3</span>
+                                    Ownership de Proyecto Ancla
+                                </td>
+                                <td class="p-4 text-white/70">
+                                    • Asumir titularidad técnica de Tienda.<br>
+                                    • Involucramiento en demos y arquitectura.<br>
+                                    • Liderazgo con el ejemplo en visitas a campo.
+                                </td>
+                                <td class="p-4 text-white/70">
+                                    <span class="text-amber-400 font-medium">Visita a Bodega:</span> Lu llegó 1 hora tarde y se fue a las 2:00 pm mientras su equipo se quedó hasta las 5:00 pm. Transmisión de mensaje de desinterés. Ahora asume Comercio Unificado.
+                                </td>
+                                <td class="p-4 text-center">
+                                    <span class="px-2 py-1 bg-amber-500/20 text-amber-300 border border-amber-500/30 rounded-full font-mono font-bold text-[11px]">35%</span>
+                                </td>
+                            </tr>
+
+                            <!-- Eje 4 -->
+                            <tr class="hover:bg-white/[0.02] transition">
+                                <td class="p-4 font-semibold text-white">
+                                    <span class="text-brandPink block text-[10px] uppercase font-mono">EJE 4</span>
+                                    Calidad Visual & Design Critique
+                                </td>
+                                <td class="p-4 text-white/70">
+                                    • Reducción al 0% de deuda técnica visual.<br>
+                                    • Design Critiques semanales rigurosos.<br>
+                                    • Dominio 100% de GLUE y UI QA checklists.
+                                </td>
+                                <td class="p-4 text-white/70">
+                                    <span class="text-rose-400 font-medium">Retro Super App:</span> Devs reportan "Figma desordenado, no se entienden flujos, faltan casos de error", usándolo como justificación para saltarse a UX y avanzar con IA.
+                                </td>
+                                <td class="p-4 text-center">
+                                    <span class="px-2 py-1 bg-rose-500/20 text-rose-300 border border-rose-500/30 rounded-full font-mono font-bold text-[11px]">30%</span>
+                                </td>
+                            </tr>
+
+                            <!-- Eje 5 -->
+                            <tr class="hover:bg-white/[0.02] transition">
+                                <td class="p-4 font-semibold text-white">
+                                    <span class="text-brandPink block text-[10px] uppercase font-mono">EJE 5</span>
+                                    Gestión del Tiempo & Capacitación
+                                </td>
+                                <td class="p-4 text-white/70">
+                                    • Time Blocking en Outlook.<br>
+                                    • Inscripción a curso de Liderazgo.<br>
+                                    • Delegación en JIRA y plan del equipo.
+                                </td>
+                                <td class="p-4 text-white/70">
+                                    <span class="text-amber-400 font-medium">Sobrecarga persistente:</span> Falta de delegación en consultores Senior; el curso ejecutivo no se consolidó en aprendizajes prácticos frente al equipo.
+                                </td>
+                                <td class="p-4 text-center">
+                                    <span class="px-2 py-1 bg-amber-500/20 text-amber-300 border border-amber-500/30 rounded-full font-mono font-bold text-[11px]">30%</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center text-xs text-white/40 border-t border-white/5 pt-4">
+                <span>Evaluación Cualitativa & Cuantitativa</span>
+                <span class="text-amber-400 font-mono font-semibold">Promedio Ponderado de Cumplimiento: 28%</span>
+            </div>
+        </section>
+
+
+        <!-- ==========================================
+             SLIDE 3: DIAGNÓSTICO PROFUNDO DE LOS PUNTOS CRÍTICOS
+             ========================================== -->
+        <section id="slide-3" class="slide-section">
+            <div class="flex justify-between items-center text-xs tracking-widest uppercase text-white/40 font-mono">
+                <span>03 // LOS PUNTOS CRÍTICOS</span>
+                <span>FALLAS DE LIDERAZGO CON IMPACTO DIRECTO</span>
+            </div>
+
+            <div class="my-auto py-8">
+                <div class="mb-8">
+                    <span class="text-brandPink font-mono text-xs uppercase tracking-wider block mb-1">Diagnóstico Conductual</span>
+                    <h2 class="font-display font-bold text-3xl text-white">
+                        Los 4 Puntos Críticos no Negociables
+                    </h2>
+                    <p class="text-white/60 text-sm mt-1">
+                        Conductas que han erosionado la autoridad de la coordinación y afectado la viabilidad del capítulo.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Punto 1 -->
+                    <div class="p-6 rounded-2xl gradient-card border-l-4 border-l-rose-500 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-rose-400 font-bold text-xs uppercase font-mono tracking-wider">01. Ruptura de Acuerdos & Política</span>
+                            <i class="fa-solid fa-handshake-slash text-rose-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white font-display">Puenteo a Desarrollo & Justificación Reactiva</h3>
+                        <p class="text-xs text-white/70 leading-relaxed">
+                            Tras pactar con Ángel una pausa para ordenar el backlog de Fase 2, Lu buscó a los funcionales (Devaky/Dulcería) a espaldas del líder técnico. Al ser confrontada, justificó la acción calificando la postura de ingeniería como "un capricho". Esta falta de diplomacia debilita la alianza interdepartamental y deja a UX en posición de vulnerabilidad.
+                        </p>
+                        <div class="text-[11px] bg-rose-500/10 text-rose-300 p-2.5 rounded-lg border border-rose-500/20 font-mono">
+                            <strong>Impacto:</strong> Percepción de desgobierno y fricción directa con líderes de tecnología.
+                        </div>
+                    </div>
+
+                    <!-- Punto 2 -->
+                    <div class="p-6 rounded-2xl gradient-card border-l-4 border-l-rose-500 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-rose-400 font-bold text-xs uppercase font-mono tracking-wider">02. Fuga y Desatención del Talento</span>
+                            <i class="fa-solid fa-users-slash text-rose-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white font-display">Invisibilización y Falta de Acompañamiento</h3>
+                        <p class="text-xs text-white/70 leading-relaxed">
+                            No se reconoce el esfuerzo de consultores en foros clave; al mismo tiempo, el acompañamiento formativo ha sido inexistente. La renuncia de Roger por abandono, la salida de Mafer por falta de certidumbre, la baja de Bertha por pérdida de calidad y las peticiones constantes de ayuda de Viri confirman una ausencia de liderazgo protector.
+                        </p>
+                        <div class="text-[11px] bg-rose-500/10 text-rose-300 p-2.5 rounded-lg border border-rose-500/20 font-mono">
+                            <strong>Impacto:</strong> 4 bajas/fricciones graves en un solo ciclo anual; daño a la reputación interna.
+                        </div>
+                    </div>
+
+                    <!-- Punto 3 -->
+                    <div class="p-6 rounded-2xl gradient-card border-l-4 border-l-amber-500 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-amber-400 font-bold text-xs uppercase font-mono tracking-wider">03. Liderazgo con el Ejemplo</span>
+                            <i class="fa-solid fa-person-walking-dashed-line-arrow-right text-amber-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white font-display">Inconsistencia en Presencia en Campo</h3>
+                        <p class="text-xs text-white/70 leading-relaxed">
+                            El incidente de la bodega (llegar 1 hora tarde y retirarse 3 horas antes que el equipo operativo) destruye la legitimidad técnica y moral. Un coordinador no puede exigir disciplina y entrega a sus consultores si no modela el compromiso en la trinchera con el negocio.
+                        </p>
+                        <div class="text-[11px] bg-amber-500/10 text-amber-300 p-2.5 rounded-lg border border-amber-500/20 font-mono">
+                            <strong>Impacto:</strong> El equipo pierde el respeto profesional y percibe desconexión con la realidad de tienda.
+                        </div>
+                    </div>
+
+                    <!-- Punto 4 -->
+                    <div class="p-6 rounded-2xl gradient-card border-l-4 border-l-amber-500 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-amber-400 font-bold text-xs uppercase font-mono tracking-wider">04. Resistencia a la Autocrítica</span>
+                            <i class="fa-solid fa-shield-halved text-amber-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white font-display">Evasión y Búsqueda de Culpables Externos</h3>
+                        <p class="text-xs text-white/70 leading-relaxed">
+                            Patrón sistemático: ante cualquier falla o desvío, la primera reacción es culpar al entorno ("Devs se saltaron a UX", "cambiaron los requerimientos", "falta de manos"). Se intenta lucir en foros pero sin sustento técnico, dejando al descubierto vacíos en el entendimiento de los flujos de software.
+                        </p>
+                        <div class="text-[11px] bg-amber-500/10 text-amber-300 p-2.5 rounded-lg border border-amber-500/20 font-mono">
+                            <strong>Impacto:</strong> Imposibilita la mejora continua si no se asume responsabilidad primaria.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center text-xs text-white/40 border-t border-white/5 pt-4">
+                <span>Riesgo Operativo Alto</span>
+                <span class="text-rose-400 font-mono">Patrón de justificación reactiva detectado en 5 de 6 incidentes</span>
+            </div>
+        </section>
+
+
+        <!-- ==========================================
+             SLIDE 4: ANÁLISIS DE IMPACTO EN TALENTO (LOS 4 CASOS)
+             ========================================== -->
+        <section id="slide-4" class="slide-section">
+            <div class="flex justify-between items-center text-xs tracking-widest uppercase text-white/40 font-mono">
+                <span>04 // EVIDENCIA OBJETIVA: CAPITAL HUMANO</span>
+                <span>AUDITORÍA DE LOS 4 CASOS DE EQUIPO</span>
+            </div>
+
+            <div class="my-auto py-8">
+                <div class="mb-8">
+                    <span class="text-brandPink font-mono text-xs uppercase tracking-wider block mb-1">Impacto en Personas</span>
+                    <h2 class="font-display font-bold text-3xl text-white">
+                        La Pérdida y Desgaste del Equipo a Cargo
+                    </h2>
+                    <p class="text-white/60 text-sm mt-1">
+                        La autoridad de una líder se mide en la estabilidad y desarrollo de su gente. Estos cuatro hechos documentan el costo real.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <!-- Roger -->
+                    <div class="p-5 rounded-2xl glass-panel border-t-2 border-t-rose-500 space-y-3 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center text-white/40 text-[10px] font-mono uppercase">
+                                <span>Interno • Sr</span>
+                                <span class="text-rose-400 font-bold">Renuncia</span>
+                            </div>
+                            <h4 class="text-base font-bold text-white font-display mt-1">Caso Roger</h4>
+                            <p class="text-xs text-white/60 mt-2 leading-relaxed">
+                                Renuncia formal por sentirse estancado, sin acompañamiento directivo ni retos. Lu no sostuvo 1:1s regulares ni trazó un plan de carrera, derivando en la pérdida de un perfil estratégico de Liverpool.
+                            </p>
+                        </div>
+                        <div class="pt-3 border-t border-white/10 text-[11px] text-rose-300 font-mono">
+                            Causa: Abandono de líder
+                        </div>
+                    </div>
+
+                    <!-- Mafer -->
+                    <div class="p-5 rounded-2xl glass-panel border-t-2 border-t-rose-500 space-y-3 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center text-white/40 text-[10px] font-mono uppercase">
+                                <span>Externa</span>
+                                <span class="text-rose-400 font-bold">Renuncia</span>
+                            </div>
+                            <h4 class="text-base font-bold text-white font-display mt-1">Caso María Fernanda</h4>
+                            <p class="text-xs text-white/60 mt-2 leading-relaxed">
+                                Renunció por falta de rumbo y sensación de inseguridad laboral frente a los cambios de equipo. La coordinación no brindó certidumbre ni contención en momentos de transición organizativa.
+                            </p>
+                        </div>
+                        <div class="pt-3 border-t border-white/10 text-[11px] text-rose-300 font-mono">
+                            Causa: Falta de certidumbre
+                        </div>
+                    </div>
+
+                    <!-- Bertha -->
+                    <div class="p-5 rounded-2xl glass-panel border-t-2 border-t-amber-500 space-y-3 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center text-white/40 text-[10px] font-mono uppercase">
+                                <span>Externa</span>
+                                <span class="text-amber-400 font-bold">No Renovación</span>
+                            </div>
+                            <h4 class="text-base font-bold text-white font-display mt-1">Caso Bertha</h4>
+                            <p class="text-xs text-white/60 mt-2 leading-relaxed">
+                                No se renovó su contrato tras una decaída severa en la calidad técnica de sus entregas. Lu no realizó Visual QA temprano ni dio feedback oportuno; al no corregirse a tiempo, el trabajo se volvió inviable.
+                            </p>
+                        </div>
+                        <div class="pt-3 border-t border-white/10 text-[11px] text-amber-300 font-mono">
+                            Causa: Nulo Visual QA
+                        </div>
+                    </div>
+
+                    <!-- Viri -->
+                    <div class="p-5 rounded-2xl glass-panel border-t-2 border-t-amber-500 space-y-3 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center text-white/40 text-[10px] font-mono uppercase">
+                                <span>Interna • Sr</span>
+                                <span class="text-amber-400 font-bold">Desgaste</span>
+                            </div>
+                            <h4 class="text-base font-bold text-white font-display mt-1">Caso Viri</h4>
+                            <p class="text-xs text-white/60 mt-2 leading-relaxed">
+                                Peticiones constantes de ayuda a la Gerencia y a la coordinación de Leslie por falta de guía UI, planeación y respaldo ante Desarrollo en Super App. Se operó en soledad técnica.
+                            </p>
+                        </div>
+                        <div class="pt-3 border-t border-white/10 text-[11px] text-amber-300 font-mono">
+                            Causa: Falta de directrices
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center text-xs text-white/40 border-t border-white/5 pt-4">
+                <span>Indicador de Retención de Talento</span>
+                <span class="text-rose-400 font-mono font-bold">KPI Incumplido: 0% de Fuga No Planificada ➔ 4 Eventos Críticos</span>
+            </div>
+        </section>
+
+
+        <!-- ==========================================
+             SLIDE 5: CRITICIDAD DEL PUESTO Y DEL ROL
+             ========================================== -->
+        <section id="slide-5" class="slide-section">
+            <div class="flex justify-between items-center text-xs tracking-widest uppercase text-white/40 font-mono">
+                <span>05 // CRITICIDAD DEL ROL</span>
+                <span>POR QUÉ UNA COORDINACIÓN NO ES UN ROL TÁCTICO</span>
+            </div>
+
+            <div class="my-auto py-8">
+                <div class="mb-8">
+                    <span class="text-brandPink font-mono text-xs uppercase tracking-wider block mb-1">Impacto Organizacional</span>
+                    <h2 class="font-display font-bold text-3xl text-white">
+                        La Responsabilidad Crítica de una Coordinación UX
+                    </h2>
+                    <p class="text-white/60 text-sm mt-1">
+                        Un error de diseño en un consultor cuesta horas; un error de liderazgo en un coordinador cuesta millones y fractura la operación.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Impacto 1 -->
+                    <div class="p-6 rounded-2xl gradient-card border border-white/10 space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-purple-900/40 border border-brandPurple text-brandPink flex items-center justify-center text-2xl font-bold">
+                            <i class="fa-solid fa-cash-register"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white font-display">1. Impacto Transaccional Millonario</h3>
+                        <p class="text-xs text-white/70 leading-relaxed">
+                            Puntos de Venta (Comercio Unificado y Kioscos) gestiona el flujo de caja más grande del retail en México. Diseñar flujos ambiguos en *Cash Management* o fallar en la integración de terminales no es un error estético: genera filas en piso, descuadres de arqueo y millones en pérdidas operativas.
+                        </p>
+                    </div>
+
+                    <!-- Impacto 2 -->
+                    <div class="p-6 rounded-2xl gradient-card border border-white/10 space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-purple-900/40 border border-brandPurple text-brandPink flex items-center justify-center text-2xl font-bold">
+                            <i class="fa-solid fa-shield-virus"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white font-display">2. Escudo Institucional & DoR</h3>
+                        <p class="text-xs text-white/70 leading-relaxed">
+                            La coordinadora es el filtro de calidad que impide que código a medio cocer llegue a producción. Si no se auditan los Figma con Auto Layout y casos borde, Desarrollo toma la justificación perfecta para ignorar a UX y programar con IA sobre supuestos, multiplicando el retrabajo.
+                        </p>
+                    </div>
+
+                    <!-- Impacto 3 -->
+                    <div class="p-6 rounded-2xl gradient-card border border-white/10 space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-purple-900/40 border border-brandPurple text-brandPink flex items-center justify-center text-2xl font-bold">
+                            <i class="fa-solid fa-network-wired"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white font-display">3. Conexión de Ecosistema (Silos)</h3>
+                        <p class="text-xs text-white/70 leading-relaxed">
+                            Puntos de Venta no puede operar como una isla desvinculada de E-commerce, Logística y Checkout. La coordinadora debe dominar lo que hacen Les y Miriam para que los tokens, las promociones y los clientes naveguen sin fricción en tienda y digital.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Callout Box -->
+                <div class="mt-8 p-4 rounded-xl bg-brandPurple/20 border border-brandPink/30 flex items-center gap-4 text-xs text-white/80">
+                    <i class="fa-solid fa-circle-exclamation text-brandPink text-xl shrink-0"></i>
+                    <span>
+                        <strong>Conclusión de Criticidad:</strong> Este rol no admite pasividad ni justificaciones reactivas. Cada desvío de la coordinación repercute directamente en la velocidad de la fábrica de software y en la confianza de la Dirección.
+                    </span>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center text-xs text-white/40 border-t border-white/5 pt-4">
+                <span>Gobernanza de Producto</span>
+                <span class="text-brandPink font-mono">Dominio: Puntos de Venta en Tienda (POS, Kioscos, CU)</span>
+            </div>
+        </section>
+
+
+        <!-- ==========================================
+             SLIDE 6: PORCENTAJE DE MEJORA Y JUSTIFICACIÓN
+             ========================================== -->
+        <section id="slide-6" class="slide-section">
+            <div class="flex justify-between items-center text-xs tracking-widest uppercase text-white/40 font-mono">
+                <span>06 // BALANCE CUANTITATIVO</span>
+                <span>¿POR QUÉ UN 28% DE MEJORA GLOBAL?</span>
+            </div>
+
+            <div class="my-auto py-8">
+                <div class="mb-8">
+                    <span class="text-brandPink font-mono text-xs uppercase tracking-wider block mb-1">Métricas de Evaluación</span>
+                    <h2 class="font-display font-bold text-3xl text-white">
+                        Porcentajes de Cumplimiento por Dimensión
+                    </h2>
+                    <p class="text-white/60 text-sm mt-1">
+                        Desglose sustentado en evidencias observables desde la emisión del plan transformacional.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-5 gap-4">
+                    <!-- Dim 1 -->
+                    <div class="p-4 rounded-xl glass-panel border border-white/10 flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] font-mono text-white/40 uppercase">EJE 1 • 20% PESO</span>
+                            <h4 class="font-bold text-sm text-white mt-1">Presencia & Negociación</h4>
+                            <div class="text-3xl font-extrabold text-rose-400 font-display my-3">25%</div>
+                            <p class="text-[11px] text-white/60 leading-relaxed">
+                                <strong>Por qué:</strong> Se rompió el acuerdo de gobernanza en Dulcería; persistencia de justificaciones; la gerencia tuvo que entrar a rescatar la relación con Devs.
+                            </p>
+                        </div>
+                        <div class="w-full bg-white/10 rounded-full h-1.5 mt-4 overflow-hidden">
+                            <div class="bg-rose-500 h-full rounded-full" style="width: 25%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Dim 2 -->
+                    <div class="p-4 rounded-xl glass-panel border border-white/10 flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] font-mono text-white/40 uppercase">EJE 2 • 25% PESO</span>
+                            <h4 class="font-bold text-sm text-white mt-1">Gobernanza & Equipo</h4>
+                            <div class="text-3xl font-extrabold text-rose-400 font-display my-3">20%</div>
+                            <p class="text-[11px] text-white/60 leading-relaxed">
+                                <strong>Por qué:</strong> 4 eventos críticos de desatención de talento (Roger, Mafer, Bertha, Viri); falta de 1:1s estructurados y nulo reconocimiento al equipo en foros.
+                            </p>
+                        </div>
+                        <div class="w-full bg-white/10 rounded-full h-1.5 mt-4 overflow-hidden">
+                            <div class="bg-rose-500 h-full rounded-full" style="width: 20%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Dim 3 -->
+                    <div class="p-4 rounded-xl glass-panel border border-white/10 flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] font-mono text-white/40 uppercase">EJE 3 • 20% PESO</span>
+                            <h4 class="font-bold text-sm text-white mt-1">Ownership Ancla</h4>
+                            <div class="text-3xl font-extrabold text-amber-400 font-display my-3">35%</div>
+                            <p class="text-[11px] text-white/60 leading-relaxed">
+                                <strong>Por qué:</strong> Kioscos avanzó pero la visita a bodega mostró falta de compromiso presencial. Ahora asume Comercio Unificado donde el reto de Devs es crítico.
+                            </p>
+                        </div>
+                        <div class="w-full bg-white/10 rounded-full h-1.5 mt-4 overflow-hidden">
+                            <div class="bg-amber-500 h-full rounded-full" style="width: 35%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Dim 4 -->
+                    <div class="p-4 rounded-xl glass-panel border border-white/10 flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] font-mono text-white/40 uppercase">EJE 4 • 20% PESO</span>
+                            <h4 class="font-bold text-sm text-white mt-1">Calidad Visual / QA</h4>
+                            <div class="text-3xl font-extrabold text-amber-400 font-display my-3">30%</div>
+                            <p class="text-[11px] text-white/60 leading-relaxed">
+                                <strong>Por qué:</strong> Siguen los reclamos de Devs por falta de flujos claros en Figma. No se institucionalizó el checklist de Visual QA previo al Handoff.
+                            </p>
+                        </div>
+                        <div class="w-full bg-white/10 rounded-full h-1.5 mt-4 overflow-hidden">
+                            <div class="bg-amber-500 h-full rounded-full" style="width: 30%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Dim 5 -->
+                    <div class="p-4 rounded-xl glass-panel border border-white/10 flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] font-mono text-white/40 uppercase">EJE 5 • 15% PESO</span>
+                            <h4 class="font-bold text-sm text-white mt-1">Tiempo & Delegación</h4>
+                            <div class="text-3xl font-extrabold text-amber-400 font-display my-3">30%</div>
+                            <p class="text-[11px] text-white/60 leading-relaxed">
+                                <strong>Por qué:</strong> Persiste la queja de falta de tiempo por no delegar en consultores Senior y falta de un orden estricto de prioridades semanales.
+                            </p>
+                        </div>
+                        <div class="w-full bg-white/10 rounded-full h-1.5 mt-4 overflow-hidden">
+                            <div class="bg-amber-500 h-full rounded-full" style="width: 30%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Global Score Banner -->
+                <div class="mt-8 p-6 rounded-2xl bg-gradient-to-r from-rose-950/40 via-purple-950/40 to-slate-900 border border-rose-500/30 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-2xl bg-rose-500/20 text-rose-400 flex items-center justify-center text-3xl font-black font-display">
+                            28%
+                        </div>
+                        <div>
+                            <h4 class="text-base font-bold text-white font-display">Calificación Global de Avance Real</h4>
+                            <p class="text-xs text-white/60">El plan se mantiene mayoritariamente en el terreno declarativo sin adopción en el día a día.</p>
+                        </div>
+                    </div>
+                    <span class="px-3 py-1.5 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/40 text-xs font-mono font-bold uppercase tracking-wider">
+                        Estatus: Desempeño No Favorable / Condicional
+                    </span>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center text-xs text-white/40 border-t border-white/5 pt-4">
+                <span>Cálculo de Eficacia Operativa</span>
+                <span class="text-rose-400 font-mono">Brecha vs. Estándar Esperado: -72%</span>
+            </div>
+        </section>
+
+
+        <!-- ==========================================
+             SLIDE 7: ENFOQUE HUMANO & CONDICIONALIDAD (EMBARAZO)
+             ========================================== -->
+        <section id="slide-7" class="slide-section">
+            <div class="flex justify-between items-center text-xs tracking-widest uppercase text-white/40 font-mono">
+                <span>07 // ENFOQUE HUMANO & PROFESIONAL</span>
+                <span>EL FACTOR DE IMPULSO: LA NUEVA ETAPA DE VIDA</span>
+            </div>
+
+            <div class="my-auto py-8">
+                <div class="mb-8">
+                    <span class="text-brandPink font-mono text-xs uppercase tracking-wider block mb-1">Separación de Planos</span>
+                    <h2 class="font-display font-bold text-3xl text-white">
+                        Tu Maternidad y la Madurez de tu Liderazgo
+                    </h2>
+                    <p class="text-white/60 text-sm mt-1">
+                        Cuentas con mi respaldo humano absoluto, pero el estándar de la coordinación requiere una evolución inmediata.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <!-- Left: Mensaje humano y legal -->
+                    <div class="space-y-4 text-xs text-white/80 leading-relaxed">
+                        <div class="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20">
+                            <h4 class="text-emerald-400 font-bold text-sm mb-1">
+                                <i class="fa-solid fa-heart mr-1.5"></i> Respaldo Institucional y Personal
+                            </h4>
+                            <p class="text-white/70">
+                                Celebro contigo esta hermosa noticia. Tienes garantizado el cumplimiento irrestricto de todas las políticas institucionales de Liverpool. Cuentas con mi empatía y con un entorno seguro para cuidar tu salud y la de tu bebé.
+                            </p>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-rose-500/10 border border-rose-500/20">
+                            <h4 class="text-rose-400 font-bold text-sm mb-1">
+                                <i class="fa-solid fa-briefcase mr-1.5"></i> La Realidad de la Posición ("Puesto a Prueba")
+                            </h4>
+                            <p class="text-white/70">
+                                Sin embargo, tu continuidad en esta coordinación está formalmente en <strong>periodo de prueba y observación estricta</strong>. Esto no tiene que ver con tu embarazo: tiene que ver con los resultados acumulados, la rotación de talento y la falta de gobernanza previa.
+                            </p>
+                        </div>
+
+                        <p class="text-white/60 italic">
+                            "No podemos llegar a tu periodo de maternidad con un equipo fracturado, dependiente o desorganizado. Tu nueva etapa debe ser el motor para consolidar el orden, no la justificación para desatender la coordinación."
+                        </p>
+                    </div>
+
+                    <!-- Right: Transformación requerida -->
+                    <div class="p-6 rounded-2xl gradient-card border border-brandPink/30 space-y-4">
+                        <h4 class="text-sm font-bold text-brandPink font-display uppercase tracking-wider">
+                            ¿Qué significa usar esta etapa como motor?
+                        </h4>
+                        
+                        <div class="space-y-3 text-xs">
+                            <div class="flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full bg-brandPink/20 text-brandPink flex items-center justify-center shrink-0 font-bold text-[11px]">1</div>
+                                <div>
+                                    <strong class="text-white block">Aprender a delegar con estructura:</strong>
+                                    <span class="text-white/60">Apóyate en Ana, Mitzi y David. No absorbas tareas operativas; supervisa con checklists claros.</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full bg-brandPink/20 text-brandPink flex items-center justify-center shrink-0 font-bold text-[11px]">2</div>
+                                <div>
+                                    <strong class="text-white block">Presencia firme sin desgaste:</strong>
+                                    <span class="text-white/60">Menos palabras y más acuerdos formales. Eliminar la confrontación reactiva y usar el modelo AEC con ingeniería.</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full bg-brandPink/20 text-brandPink flex items-center justify-center shrink-0 font-bold text-[11px]">3</div>
+                                <div>
+                                    <strong class="text-white block">Dejar un equipo autónomo:</strong>
+                                    <span class="text-white/60">El mayor éxito de tu liderazgo será irte a tu maternidad sabiendo que Puntos de Venta funciona como un reloj sin ti.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center text-xs text-white/40 border-t border-white/5 pt-4">
+                <span>Madurez Profesional</span>
+                <span class="text-emerald-400 font-mono">Construir Autonomía antes del Cierre de Ciclo</span>
+            </div>
+        </section>
+
+
+        <!-- ==========================================
+             SLIDE 8: ACUERDOS DEFINITIVOS & SIGUIENTES PASOS
+             ========================================== -->
+        <section id="slide-8" class="slide-section">
+            <div class="flex justify-between items-center text-xs tracking-widest uppercase text-white/40 font-mono">
+                <span>08 // SIGUIENTES PASOS</span>
+                <span>COMPROMISOS INAMOVIBLES Q4 2026 – Q1 2027</span>
+            </div>
+
+            <div class="my-auto py-8">
+                <div class="mb-8">
+                    <span class="text-brandPink font-mono text-xs uppercase tracking-wider block mb-1">Hoja de Ruta</span>
+                    <h2 class="font-display font-bold text-3xl text-white">
+                        Los 4 Compromisos Inamovibles para Lu
+                    </h2>
+                    <p class="text-white/60 text-sm mt-1">
+                        Acciones concretas con entregables evaluables para las próximas dos semanas.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Compromiso 1 -->
+                    <div class="p-5 rounded-2xl gradient-card border-l-4 border-l-brandPurple space-y-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-mono font-bold text-brandPink">COMPROMISO 1</span>
+                            <span class="text-[10px] bg-white/10 px-2 py-0.5 rounded text-white/60">Inmediato</span>
+                        </div>
+                        <h4 class="text-base font-bold text-white font-display">Absorber Comercio Unificado al 100%</h4>
+                        <p class="text-xs text-white/70 leading-relaxed">
+                            Apropiarse del tablero de Monday (ERFs 97%, ERTs 92%, Devs 16%). Acompañar a Mitzi, Ana y David en el Handoff de *Pack 1 Boutiques* y *Cash Management* sin generar fricción con la fábrica de software.
+                        </p>
+                        <div class="text-[11px] text-white/50 pt-2 border-t border-white/10 font-mono">
+                            Entregable: Status semanal consolidado de CU presentado los jueves.
+                        </div>
+                    </div>
+
+                    <!-- Compromiso 2 -->
+                    <div class="p-5 rounded-2xl gradient-card border-l-4 border-l-brandPink space-y-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-mono font-bold text-brandPink">COMPROMISO 2</span>
+                            <span class="text-[10px] bg-white/10 px-2 py-0.5 rounded text-white/60">Quincenal</span>
+                        </div>
+                        <h4 class="text-base font-bold text-white font-display">1:1s Inamovibles con Bitácora en Confluence</h4>
+                        <p class="text-xs text-white/70 leading-relaxed">
+                            Sesión obligatoria de 30 minutos cada 15 días con Ana, Mitzi, David y Lidier. Registro público de acuerdos y acompañamiento profesional para erradicar la percepción de abandono.
+                        </p>
+                        <div class="text-[11px] text-white/50 pt-2 border-t border-white/10 font-mono">
+                            Entregable: Enlace a Confluence con minutas firmadas antes del 15 Nov.
+                        </div>
+                    </div>
+
+                    <!-- Compromiso 3 -->
+                    <div class="p-5 rounded-2xl gradient-card border-l-4 border-l-indigo-500 space-y-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-mono font-bold text-indigo-400">COMPROMISO 3</span>
+                            <span class="text-[10px] bg-white/10 px-2 py-0.5 rounded text-white/60">Cross-Team</span>
+                        </div>
+                        <h4 class="text-base font-bold text-white font-display">Alfabetización con Les y Miriam</h4>
+                        <p class="text-xs text-white/70 leading-relaxed">
+                            Agendar 2 sesiones de *shadowing* (una con Leslie y una con Miriam) para entender cómo conectan las plataformas, la librería de íconos y Checkout con POS, evitando operar en silos.
+                        </p>
+                        <div class="text-[11px] text-white/50 pt-2 border-t border-white/10 font-mono">
+                            Entregable: Matriz de dependencias técnicas CU vs. Plataformas.
+                        </div>
+                    </div>
+
+                    <!-- Compromiso 4 -->
+                    <div class="p-5 rounded-2xl gradient-card border-l-4 border-l-emerald-500 space-y-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-mono font-bold text-emerald-400">COMPROMISO 4</span>
+                            <span class="text-[10px] bg-white/10 px-2 py-0.5 rounded text-white/60">Cultura</span>
+                        </div>
+                        <h4 class="text-base font-bold text-white font-display">Protocolo de Reconocimiento Público</h4>
+                        <p class="text-xs text-white/70 leading-relaxed">
+                            Prohibido presentar avances en primera persona sin dar crédito al consultor que diseñó las pantallas. En toda demo o sesión con stakeholders se mencionará explícitamente el trabajo de la célula.
+                        </p>
+                        <div class="text-[11px] text-white/50 pt-2 border-t border-white/10 font-mono">
+                            Entregable: Portadas de presentación con créditos completos de autor.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Next Sync Dates from PDF Calendar -->
+                <div class="mt-8 p-4 rounded-xl bg-white/5 border border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-calendar-check text-brandPink"></i>
+                        <span class="text-white/80 font-semibold">Próximos Checkpoints Oficiales del Calendario:</span>
+                    </div>
+                    <div class="flex items-center gap-4 font-mono text-white/70">
+                        <span>• <strong>5 Nov 2026:</strong> Revisión de Clima & Encuesta 360</span>
+                        <span>• <strong>10 Nov 2026:</strong> Checkpoint CU</span>
+                        <span>• <strong>8 Dic 2026:</strong> Evaluación de Cierre Q4</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center text-xs text-white/40 border-t border-white/5 pt-4">
+                <span>Firmas y Compromisos Registrados</span>
+                <span class="text-white font-mono font-bold">Casandra Abreu • Gerente UX Operations</span>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JAVASCRIPT SLIDE NAVIGATION CONTROLS -->
+    <script>
+        const slideIds = ['slide-1', 'slide-2', 'slide-3', 'slide-4', 'slide-5', 'slide-6', 'slide-7', 'slide-8'];
+        let currentSlideIdx = 0;
+
+        function updateSlideIndicator() {
+            const indicator = document.getElementById('currentSlideNumber');
+            if (indicator) {
+                indicator.textContent = `${currentSlideIdx + 1} / ${slideIds.length}`;
+            }
+        }
+
+        function scrollToSlide(direction) {
+            if (direction === 'next' && currentSlideIdx < slideIds.length - 1) {
+                currentSlideIdx++;
+            } else if (direction === 'prev' && currentSlideIdx > 0) {
+                currentSlideIdx--;
+            }
+            const target = document.getElementById(slideIds[currentSlideIdx]);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                updateSlideIndicator();
+            }
+        }
+
+        // Detect scroll position to update slide number
+        window.addEventListener('scroll', () => {
+            const scrollPos = window.scrollY + (window.innerHeight / 2);
+            slideIds.forEach((id, index) => {
+                const el = document.getElementById(id);
+                if (el) {
+                    const top = el.offsetTop;
+                    const height = el.offsetHeight;
+                    if (scrollPos >= top && scrollPos < top + height) {
+                        currentSlideIdx = index;
+                        updateSlideIndicator();
+                    }
+                }
+            });
+        }, { passive: true });
+
+        // Keyboard arrows navigation
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') {
+                e.preventDefault();
+                scrollToSlide('next');
+            } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+                e.preventDefault();
+                scrollToSlide('prev');
+            }
+        });
+    </script>
+</body>
+</html>
